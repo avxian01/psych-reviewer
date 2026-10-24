@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>PSYCH-ASS CFE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@400;600;700&family=Roboto:wght@400;500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #6366f1;
+      --primary-hover: #4f46e5;
+      --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --correct: #10b981;
+      --correct-bg: #ecfdf5;
+      --incorrect: #ef4444;
+      --incorrect-bg: #fef2f2;
+      --base-font-size: 12px;
+      --quiz-font: Arial, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; user-select: text; }
+    body {
+      font-family: var(--quiz-font);
+      font-size: var(--base-font-size);
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 16px;
+    }
+    .container {
+      width: 100%;
+      max-width: 480px;
+      background-color: var(--card-bg);
+      border-radius: 24px;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+      padding: 20px;
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      display: flex;
+      flex-direction: column;
+    }
+    @media (max-width: 600px) {
+      body { padding: 12px; background: var(--card-bg); }
+      .container { max-width: 100%; width: 100%; max-height: 92vh; border-radius: 20px; padding: 16px; overflow-y: auto; }
+    }
+    .app-watermark { margin-top: 10px; font-size: 0.8em; color: var(--text-muted); font-weight: 600; text-align: center; }
+    .header-box { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; position: relative; width: 100%; }
+    .header-box h1, .header-box h3 { text-align: center; color: var(--primary); font-weight: 700; flex: 1; font-size: 1.3rem; margin: 0 40px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .top-action-btn { position: absolute; top: 50%; transform: translateY(-50%); background: #f8fafc; border: 1px solid var(--border); border-radius: 12px; width: 38px; height: 38px; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 10; }
+    .settings-btn { right: 0; }
+    .home-btn { left: 0; }
+    .screen { display: none; width: 100%; flex-direction: column; }
+    .screen.active { display: flex; flex: 1; }
+    .auth-container { text-align: center; padding: 10px 0; margin: auto 0; }
+    .auth-input, .auth-error, .stats-dashboard, .dash-card, .active-badge-tag, .form-group, label, .custom-select-trigger, .modal-overlay, .custom-modal-card, .settings-modal-content, .modal-notes-content, .shop-modal-content, .modal-card-header, .modal-option, .full-notes-body, .btn, .progress-container, .progress-bar, .quiz-info-row, .question-tracker, .streak-badge, .points-badge, .category-badge, .question-text, .mode-selector, .mode-btn, .options-grid, .option-btn, .identification-box, .notes-display-card, .feedback-msg, .score-summary, .score-number, .actions-group, .terms-list-container, .term-card, .term-card-title, .term-card-badge, .powerups-bar, .powerup-chip, .shop-tabs, .shop-tab-btn, .shop-items-list, .shop-item-card, .shop-item-info, .shop-item-price, .shop-buy-btn, .help-btn-circle, .spin-container, .spin-wheel-box, .spin-wheel-inner, .spin-result-box {
+      /* Shared styles preservation */
+    }
+    .auth-input { width: 100%; padding: 12px 16px; border: 1.5px solid var(--border); border-radius: 12px; font-size: 1.05em; text-align: center; margin: 14px 0; outline: none; background: #f8fafc; }
+    .auth-error { color: var(--incorrect); font-size: 0.85rem; font-weight: 600; margin-bottom: 10px; display: none; }
+    .stats-dashboard { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+    .dash-card { background: #f8fafc; border: 1px solid var(--border); border-radius: 14px; padding: 8px 4px; text-align: center; }
+    .dash-card .title { font-size: 0.68rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; }
+    .dash-card .val { font-size: 1.05rem; font-weight: 700; color: var(--primary); margin-top: 2px; }
+    .active-badge-tag { font-size: 0.72rem; background: #fef3c7; color: #d97706; padding: 4px 10px; border-radius: 20px; font-weight: 700; text-align: center; margin-bottom: 10px; display: none; }
+    .form-group { margin-bottom: 12px; }
+    label { display: block; font-weight: 600; margin-bottom: 4px; color: var(--text-main); font-size: 0.8rem; text-transform: uppercase; }
+    .custom-select-trigger { width: 100%; padding: 11px 14px; border: 1.5px solid var(--border); border-radius: 12px; background-color: #f8fafc; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-size: 0.95em; font-weight: 500; }
+    .custom-select-trigger.disabled { opacity: 0.55; cursor: not-allowed; background-color: #f1f5f9; }
+    .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.7); z-index: 99999; justify-content: center; align-items: center; padding: 16px; }
+    .modal-overlay.active { display: flex; }
+    .custom-modal-card, .settings-modal-content, .modal-notes-content, .shop-modal-content { background: #ffffff; width: 100%; max-width: 440px; border-radius: 20px; padding: 18px; display: flex; flex-direction: column; }
+    .modal-card-header { padding: 12px; font-weight: 700; color: var(--primary); border-bottom: 1px solid var(--border); }
+    #custom-options-list { overflow-y: auto; max-height: 50vh; }
+    .modal-option { padding: 12px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); cursor: pointer; }
+    .radio-circle { width: 18px; height: 18px; border: 2px solid var(--border); border-radius: 50%; display: flex; justify-content: center; align-items: center; }
+    .modal-option.selected .radio-circle { border-color: var(--primary); background-color: var(--primary); }
+    .modal-option.selected .radio-circle::after { content: ''; width: 6px; height: 6px; background-color: white; border-radius: 50%; }
+    .btn { width: 100%; padding: 12px; border: none; border-radius: 12px; background-color: var(--primary); color: white; font-weight: 600; cursor: pointer; }
+    .btn-secondary { background-color: #e2e8f0; color: #334155; }
+    .btn-warning { background-color: #f59e0b; color: white; }
+    .btn-danger { background-color: #ef4444; color: white; }
+    .btn-outline { background-color: transparent; border: 2px solid var(--primary); color: var(--primary); }
+    .progress-container { width: 100%; background-color: var(--border); height: 7px; border-radius: 4px; margin-bottom: 10px; overflow: hidden; }
+    .progress-bar { height: 100%; width: 0%; background-color: var(--primary); transition: width 0.3s; }
+    .quiz-info-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .streak-badge { background: #fef3c7; color: #d97706; padding: 3px 8px; border-radius: 20px; font-size: 0.82em; font-weight: 700; display: none; }
+    .points-badge { background: #e0e7ff; color: var(--primary); padding: 3px 8px; border-radius: 20px; font-size: 0.82em; font-weight: 700; }
+    .category-badge { font-size: 0.78em; background: #eef2ff; color: var(--primary); padding: 4px 10px; border-radius: 20px; font-weight: 600; margin-bottom: 8px; display: inline-block; }
+    .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 12px; line-height: 1.45; }
+    .mode-selector { display: flex; gap: 6px; margin-bottom: 12px; background-color: #f1f5f9; padding: 4px; border-radius: 12px; }
+    .mode-btn { flex: 1; padding: 8px; border: none; background: transparent; cursor: pointer; border-radius: 99px; font-weight: 600; color: var(--text-muted); }
+    .mode-btn.active { background-color: #ffffff; color: var(--primary); }
+    .options-grid { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+    .option-btn { padding: 12px; border: 1.5px solid var(--border); border-radius: 12px; background: #fff; text-align: left; cursor: pointer; font-weight: 500; }
+    .option-btn.correct { background-color: var(--correct-bg); border-color: var(--correct); color: var(--correct); font-weight: 700; }
+    .option-btn.incorrect { background-color: var(--incorrect-bg); border-color: var(--incorrect); color: var(--incorrect); font-weight: 700; }
+    .identification-box input { width: 100%; padding: 12px; border: 1.5px solid var(--border); border-radius: 12px; margin-bottom: 8px; outline: none; background: #f8fafc; }
+    .notes-display-card { background: #fffbeb; border: 1.5px solid #fcd34d; border-radius: 14px; padding: 12px; margin-bottom: 12px; color: #78350f; font-size: 0.93em; }
+    .feedback-msg { font-weight: 700; margin-bottom: 6px; font-size: 0.92em; }
+    .feedback-msg.correct { color: var(--correct); }
+    .feedback-msg.incorrect { color: var(--incorrect); }
+    .terms-list-container { max-height: 52vh; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+    .term-card { background: #f8fafc; border: 1.5px solid var(--border); border-radius: 14px; padding: 12px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+    .term-card-title { font-weight: 700; font-size: 0.93em; flex: 1; }
+    .term-card-badge { font-size: 0.68em; background: #eef2ff; color: var(--primary); padding: 4px 8px; border-radius: 9px; font-weight: 700; }
+    .powerups-bar { display: flex; gap: 6px; overflow-x: auto; padding: 6px 0; margin-bottom: 10px; }
+    .powerup-chip { background: #f1f5f9; border: 1.5px solid var(--border); border-radius: 12px; padding: 6px 10px; font-size: 0.78em; font-weight: 700; cursor: pointer; white-space: nowrap; }
+    .shop-tabs { display: flex; gap: 4px; margin-bottom: 12px; background: #f1f5f9; padding: 3px; border-radius: 12px; }
+    .shop-tab-btn { flex: 1; padding: 7px; border: none; background: transparent; font-size: 0.72em; font-weight: 700; color: var(--text-muted); border-radius: 9px; cursor: pointer; }
+    .shop-tab-btn.active { background: #ffffff; color: var(--primary); }
+    .shop-items-list { overflow-y: auto; max-height: 50vh; display: flex; flex-direction: column; gap: 10px; }
+    .shop-item-card { border: 1.5px solid var(--border); background: #f8fafc; border-radius: 14px; padding: 12px; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+    .shop-item-info h4 { font-size: 0.92rem; font-weight: 700; }
+    .shop-item-info p { font-size: 0.76rem; color: var(--text-muted); margin-top: 2px; }
+    .shop-item-price { font-size: 0.82rem; font-weight: 800; color: var(--primary); margin-top: 4px; }
+    .shop-buy-btn { padding: 8px 12px; font-size: 0.8em; border-radius: 10px; }
+    .help-btn-circle { width: 22px; height: 22px; border-radius: 50%; background: #e2e8f0; color: #334155; font-size: 0.75rem; font-weight: 800; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; border: none; }
+    .spin-wheel-box { width: 180px; height: 180px; margin: 16px auto; border-radius: 50%; background: conic-gradient(#f59e0b 0deg 72deg, #10b981 72deg 144deg, #6366f1 144deg 216deg, #ec4899 216deg 288deg, #8b5cf6 288deg 360deg); border: 6px solid var(--border); display: flex; justify-content: center; align-items: center; transition: transform 3s cubic-bezier(0.15, 1, 0.3, 1); }
+    .spin-wheel-inner { width: 90px; height: 90px; background: var(--card-bg); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: 800; font-size: 0.85rem; color: var(--primary); border: 3px solid var(--border); }
+    .spin-result-box { background: #f8fafc; border: 1.5px solid var(--border); border-radius: 14px; padding: 12px; margin: 12px 0; font-weight: 700; color: var(--primary); min-height: 50px; display: flex; align-items: center; justify-content: center; }
+    .theme-dark { background: #0f172a; color: #f1f5f9; }
+    .theme-dark .container { background: #1e293b; border-color: #334155; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- AUTH SCREEN -->
+  <div id="auth-screen" class="screen active">
+    <div class="auth-container">
+      <div style="font-size: 3rem; margin-bottom: 10px;">🔒</div>
+      <h2>Protected Reviewer</h2>
+      <p style="color: var(--text-muted); font-size: 0.9em; margin-top: 6px;">Enter the passcode to access</p>
+      <input type="password" id="passcode-input" class="auth-input" placeholder="Passcode" onkeyup="if(event.key==='Enter') verifyPasscode()">
+      <div id="auth-error-msg" class="auth-error">Incorrect Passcode!</div>
+      <button class="btn" onclick="verifyPasscode()">Unlock Reviewer</button>
+      <div class="app-watermark">@avxianx</div>
+    </div>
+  </div>
+
+  <!-- HOME SCREEN -->
+  <div id="home-screen" class="screen">
+    <div class="header-box">
+      <h1>PSY-081 REVIEWER</h1>
+      <button class="top-action-btn settings-btn" onclick="openSettingsModal()">⚙️</button>
+    </div>
+    <div id="active-badge-tag" class="active-badge-tag">🎖️ Certified Reviewer</div>
+    <div class="stats-dashboard">
+      <div class="dash-card"><div class="title">🔥 Max Streak</div><div id="home-highest-streak" class="val">0</div></div>
+      <div class="dash-card"><div class="title">⭐ High Score</div><div id="home-total-points" class="val">0 XP</div></div>
+      <div class="dash-card" style="border-color: #f59e0b; background: #fffbeb;"><div class="title" style="color: #b45309;">🪙 Wallet XP</div><div id="home-wallet-xp" class="val" style="color: #d97706;">0 XP</div></div>
+    </div>
+    <div class="form-group"><label>Category</label><div class="custom-select-trigger" id="category-trigger" onclick="openCustomModal('category')">All Categories</div></div>
+    <div class="form-group"><label>Sub-Category</label><div class="custom-select-trigger disabled" id="subcategory-trigger" onclick="openCustomModal('subcategory')">All Sub-Categories</div></div>
+    <div class="form-group"><label>Order</label><div class="custom-select-trigger" id="order-trigger" onclick="openCustomModal('order')">Randomized (Shuffled)</div></div>
+    <button id="start-btn" class="btn" onclick="startQuiz(false)">Start Review</button>
+    <button id="continue-btn" class="btn btn-warning" style="margin-top: 6px; display: none;" onclick="continueQuiz()">Continue Review ➔</button>
+    <div style="display: flex; gap: 6px; margin-top: 6px;">
+      <button class="btn btn-outline" style="flex: 1;" onclick="openReviewOnlyMode()">📖 Notes</button>
+      <button class="btn btn-warning" style="flex: 1;" onclick="openShopModal()">🛒 Shop</button>
+      <button class="btn btn-danger" style="flex: 1;" onclick="openSpinScreen()">🎡 Spin</button>
+    </div>
+    <div style="margin-top: 6px;"><button class="btn btn-secondary" style="background: #e0e7ff; color: var(--primary);" onclick="openAchievementsModal()">🏆 Trophies & Achievements</button></div>
+    <div class="app-watermark">@avxianx</div>
+  </div>
+
+  <!-- LUCKY SPIN SCREEN -->
+  <div id="spin-screen" class="screen">
+    <div class="header-box">
+      <button class="top-action-btn home-btn" onclick="goToHome()">🏠</button>
+      <h3>Lucky Spin Wheel</h3>
+    </div>
+    <div style="text-align: center; margin-bottom: 6px;">
+      <div style="font-size: 0.85rem; font-weight: 700; color: #d97706; background: #fef3c7; padding: 4px 12px; border-radius: 12px; display: inline-block;">
+        🪙 Wallet XP: <span id="spin-wallet-balance">0</span> XP
+      </div>
+    </div>
+    <div class="spin-container" style="text-align: center;">
+      <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 4px;">Cost: <b>500 XP</b> per spin!</p>
+      <div id="spin-wheel-box" class="spin-wheel-box"><div class="spin-wheel-inner">LUCKY<br>SPIN</div></div>
+      <div id="spin-result-box" class="spin-result-box">Press Spin below to test your luck!</div>
+      <button id="spin-action-btn" class="btn btn-warning" onclick="spinTheWheel()" style="padding: 14px;">🎡 Spin Now! (500 XP)</button>
+    </div>
+    <button class="btn btn-secondary" style="margin-top: 14px;" onclick="goToHome()">Back to Home</button>
+  </div>
+
+  <!-- REVIEW ONLY SCREEN -->
+  <div id="review-only-screen" class="screen">
+    <div class="header-box"><button class="top-action-btn home-btn" onclick="goToHome()">🏠</button><h3>Review Notes Index</h3></div>
+    <div class="form-group"><label>Category</label><div class="custom-select-trigger" id="ro-category-trigger" onclick="openCustomModal('ro-category')">All Categories</div></div>
+    <div class="form-group"><label>Sub-Category</label><div class="custom-select-trigger disabled" id="ro-subcategory-trigger" onclick="openCustomModal('ro-subcategory')">All Sub-Categories</div></div>
+    <div style="font-weight: 700; font-size: 0.8em; color: var(--text-muted); text-transform: uppercase;">Terms & Topics (<span id="ro-count">0</span>)</div>
+    <div id="terms-list-container" class="terms-list-container"></div>
+  </div>
+
+  <!-- TERM DETAIL SCREEN -->
+  <div id="term-detail-screen" class="screen">
+    <div class="header-box"><h3 id="term-detail-title" style="margin: 0; text-align: center;">Term Notes</h3></div>
+    <div id="term-detail-category-badge" class="category-badge">Category</div>
+    <div style="flex: 1; overflow-y: auto; background: #f8fafc; border: 1.5px solid var(--border); border-radius: 14px; padding: 14px; margin: 8px 0; max-height: 65vh;">
+      <div id="term-detail-text"></div>
+    </div>
+    <button class="btn btn-secondary" onclick="openReviewOnlyMode()">Back to Notes Index</button>
+  </div>
+
+  <!-- QUIZ SCREEN -->
+  <div id="quiz-screen" class="screen">
+    <div class="header-box"><button class="top-action-btn home-btn" onclick="goToHome()">🏠</button><h3 id="session-title">Review Session</h3></div>
+    <div class="progress-container"><div id="progress-bar" class="progress-bar"></div></div>
+    <div class="quiz-info-row">
+      <span id="question-tracker" class="question-tracker">Quiz 1/1</span>
+      <div style="display:flex; gap:6px;">
+        <div id="points-badge" class="points-badge">⭐ <span id="session-points-count">0</span> XP</div>
+        <div id="streak-badge" class="streak-badge">🔥 <span id="streak-count">0</span></div>
+      </div>
+    </div>
+    <div><span id="category-badge" class="category-badge">Category</span></div>
+    <div id="mode-selector-box" class="mode-selector">
+      <button id="mode-id" class="mode-btn active" onclick="setAnswerType('id')">Identification</button>
+      <button id="mode-mc" class="mode-btn" onclick="setAnswerType('mc')">Multiple Choice</button>
+    </div>
+    <div id="powerups-bar" class="powerups-bar">
+      <button class="powerup-chip" id="pw-5050" onclick="usePowerup('5050')">⚡ 50:50 (<span id="count-5050">0</span>)</button>
+      <button class="powerup-chip" id="pw-hint" onclick="usePowerup('hint')">💡 Hint (<span id="count-hint">0</span>)</button>
+      <button class="powerup-chip" id="pw-shield" onclick="usePowerup('shield')">🛡️ Shield (<span id="count-shield">0</span>)</button>
+      <button class="powerup-chip" id="pw-freeze" onclick="usePowerup('freeze')">❄️ Skip (<span id="count-freeze">0</span>)</button>
+      <button class="powerup-chip" id="pw-double" onclick="usePowerup('double')">2️⃣ Double XP (<span id="count-double">0</span>)</button>
+    </div>
+    <div id="question-text" class="question-text">Question loading...</div>
+    <div id="identification-container" class="identification-box">
+      <input type="text" id="identification-input" placeholder="Type your answer here..." autocomplete="off">
+      <button id="submit-id-btn" class="btn" onclick="submitIdentification()">Submit Answer</button>
+    </div>
+    <div id="options-container" class="options-grid" style="display: none;"></div>
+    <div id="notes-only-container" class="notes-display-card" style="display: none;"><strong>Review Notes:</strong><div id="notes-only-text"></div></div>
+    <div id="feedback-message" class="feedback-msg"></div>
+    <div id="answer-explanation" style="display:none; background:#f8fafc; border:1px solid var(--border); border-radius:12px; padding:11px; margin:8px 0;"><strong style="color:var(--primary);">Why / Remember</strong><span id="answer-explanation-text"></span></div>
+    <div style="display: flex; gap: 8px; margin-top: 12px;">
+      <button id="prev-btn" class="btn btn-secondary" style="display: none; flex:1;" onclick="prevQuestion()">⬅ Prev</button>
+      <button id="view-notes-btn" class="btn btn-warning" style="display: none; flex:1;" onclick="openNotesModal()">Notes 📝</button>
+      <button id="next-btn" class="btn" style="display: none; flex:1;" onclick="nextQuestion()">Next ➔</button>
+    </div>
+  </div>
+
+  <!-- RESULT SCREEN -->
+  <div id="result-screen" class="screen">
+    <h2>Review Completed!</h2>
+    <div style="text-align: center; margin: 12px 0;">
+      <p style="color: var(--text-muted);">Your Final Score</p>
+      <div id="score-display" style="font-size: 2.6em; font-weight: 700; color: var(--primary);">0 / 0</div>
+      <p id="percentage-display" style="color: var(--text-muted); font-weight: 600; margin-top: 4px;"></p>
+      <p id="points-earned-display" style="color: var(--primary); font-weight: 700; margin-top: 4px; font-size: 1.05rem;"></p>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:12px 0;">
+      <div style="border:1px solid var(--border); background:#f8fafc; padding:10px; border-radius:12px; text-align:center;"><strong id="result-correct" style="color:var(--primary);">0</strong><span>Correct</span></div>
+      <div style="border:1px solid var(--border); background:#f8fafc; padding:10px; border-radius:12px; text-align:center;"><strong id="result-wrong" style="color:var(--primary);">0</strong><span>Incorrect</span></div>
+      <div style="border:1px solid var(--border); background:#f8fafc; padding:10px; border-radius:12px; text-align:center;"><strong id="result-total" style="color:var(--primary);">0</strong><span>Questions</span></div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <button id="retake-wrong-btn" class="btn btn-outline" onclick="retakeIncorrect()">Retake Incorrect Questions</button>
+      <button class="btn btn-secondary" onclick="resetToHome()">Home Screen</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODALS -->
+<div id="shop-modal" class="modal-overlay" onclick="closeModal(event, 'shop-modal')">
+  <div class="shop-modal-content" onclick="event.stopPropagation()">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+      <h3 style="color: var(--primary);">🛒 Item Shop</h3>
+      <div style="font-weight: 700; color: #d97706; background: #fef3c7; padding: 4px 10px; border-radius: 12px;">🪙 <span id="shop-wallet-balance">0</span> XP</div>
+    </div>
+    <div class="shop-tabs">
+      <button class="shop-tab-btn active" id="tab-powerups" onclick="switchShopTab('powerups')">Power-ups</button>
+      <button class="shop-tab-btn" id="tab-themes" onclick="switchShopTab('themes')">Themes</button>
+      <button class="shop-tab-btn" id="tab-sfx" onclick="switchShopTab('sfx')">SFX</button>
+      <button class="shop-tab-btn" id="tab-titles" onclick="switchShopTab('titles')">Badges</button>
+      <button class="shop-tab-btn" id="tab-avatars" onclick="switchShopTab('avatars')">Avatars</button>
+    </div>
+    <div id="shop-items-list" class="shop-items-list"></div>
+    <button class="btn btn-secondary" style="margin-top: 12px;" onclick="closeShopModal()">Close Shop</button>
+  </div>
+</div>
+
+<div id="achievements-modal" class="modal-overlay" onclick="closeModal(event, 'achievements-modal')">
+  <div class="shop-modal-content" onclick="event.stopPropagation()">
+    <h3 style="color: var(--primary); margin-bottom: 10px;">🏆 Achievements</h3>
+    <div id="achievements-items-list" class="shop-items-list"></div>
+    <button class="btn btn-secondary" style="margin-top: 12px;" onclick="closeAchievementsModal()">Close</button>
+  </div>
+</div>
+
+<div id="custom-select-modal" class="modal-overlay" onclick="closeModal(event, 'custom-select-modal')">
+  <div class="custom-modal-card" onclick="event.stopPropagation()">
+    <div class="modal-card-header" id="modal-card-title">Select Option</div>
+    <div id="custom-options-list"></div>
+  </div>
+</div>
+
+<div id="custom-alert-modal" class="modal-overlay" onclick="closeModal(event, 'custom-alert-modal')">
+  <div class="settings-modal-content" style="text-align: center;" onclick="event.stopPropagation()">
+    <h3 style="color: #ef4444; margin-bottom: 10px;">⚠️ Notice</h3>
+    <p id="custom-alert-msg" style="margin-bottom: 18px; font-weight: 500;"></p>
+    <button class="btn" onclick="closeAlertModal()">OK</button>
+  </div>
+</div>
+
+<div id="settings-modal" class="modal-overlay" onclick="closeModal(event, 'settings-modal')">
+  <div class="settings-modal-content" onclick="event.stopPropagation()">
+    <h3 style="color: var(--primary); margin-bottom: 14px;">Settings</h3>
+    <button class="btn btn-outline" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    <button class="btn btn-secondary" style="margin-top: 8px;" onclick="closeSettingsModal()">Close</button>
+  </div>
+</div>
+
+<div id="notes-modal" class="modal-overlay" onclick="closeModal(event, 'notes-modal')">
+  <div class="shop-modal-content" onclick="event.stopPropagation()">
+    <h3 style="color: #f59e0b; margin-bottom: 10px;">📝 Reviewer Notes</h3>
+    <div style="max-height: 50vh; overflow-y: auto;"><div id="modal-notes-text"></div></div>
+    <button class="btn btn-secondary" style="margin-top: 10px;" onclick="closeNotesModal()">Close</button>
+  </div>
+</div>
+
+<!-- MAHALAGA: Dito kinukuha ang mga tanong mula sa questions.js -->
+<script src="questions.js"></script>
+
+<script>
+  const PASSCODE = "CFE2026";
+  let walletXP = 0, highestStreak = 0, highestPointsRecord = 0, lifetimeXPEarned = 0;
+  let totalCorrectCount = 0, totalReviewsFinished = 0, totalShopPurchases = 0, totalPowerupsUsed = 0;
+  let inventory = { '5050': 0, 'hint': 0, 'shield': 0, 'freeze': 0, 'double': 0, 'aura': 0 };
+  let unlockedThemes = ['default'], unlockedSFX = ['default'], unlockedTitles = [], unlockedAvatars = [];
+  let currentEquippedTheme = 'default', currentEquippedSFX = 'default', currentEquippedTitle = '', currentEquippedAvatar = '';
+  let activeShopTab = 'powerups';
+
+  const shopCatalog = {
+    powerups: [
+      { id: 'aura', name: "Scholar's Aura (+10% XP Boost)", price: 25000, desc: 'Permanent passive boost.' },
+      { id: 'double', name: 'Double XP Boost', price: 5000, desc: 'Doubles XP earned in next session.' },
+      { id: 'shield', name: 'Streak Shield', price: 3000, desc: 'Protects streak from resetting.' },
+      { id: 'freeze', name: 'Streak Insurance', price: 2500, desc: 'Protects streak and skips question.' },
+      { id: 'hint', name: 'Hint / Key Clue', price: 2000, desc: 'Reveals first letter.' },
+      { id: '5050', name: '50:50 Eliminator', price: 1500, desc: 'Eliminates 2 incorrect choices.' },
+      { id: 'mystery', name: 'Mystery Box', price: 1000, desc: 'Random surprise drop.' }
+    ],
+    themes: [
+      { id: 'gold', name: 'Gold Luxury Theme', price: 15000, desc: 'Prestige gold theme.' },
+      { id: 'royal', name: 'Royal Crimson Theme', price: 12000, desc: 'Deep crimson red aesthetic.' },
+      { id: 'cyberpunk', name: 'Cyberpunk Neon Theme', price: 8000, desc: 'Futuristic high-tech neon.' },
+      { id: 'midnight', name: 'Midnight Lavender Theme', price: 7000, desc: 'Deep purple dark theme.' },
+      { id: 'sunset', name: 'Sunset Coral Theme', price: 6000, desc: 'Warm bright morning theme.' },
+      { id: 'emerald', name: 'Emerald Forest Theme', price: 5000, desc: 'Calming green theme.' },
+      { id: 'matrix', name: 'Matrix Hacker Theme', price: 9000, desc: 'Dark hacker green mode.' }
+    ],
+    sfx: [
+      { id: 'scifi', name: 'Sci-Fi Futuristic Blaster', price: 6000, desc: 'High-tech spaceship SFX.' },
+      { id: 'retro', name: 'Retro Arcade SFX', price: 5000, desc: 'Classic 8-bit arcade audio.' },
+      { id: 'gameshow', name: 'Game Show SFX', price: 5000, desc: 'TV Game show buzzers.' },
+      { id: 'lofi', name: 'Lo-Fi Chill Chimes', price: 4500, desc: 'Calm relaxing chimes.' }
+    ],
+    titles: [
+      { id: 'mastermind', name: 'CFE Master Mind', price: 20000, desc: 'Top-tier prestige badge.' },
+      { id: 'topnotcher', name: 'CFE Topnotcher', price: 15000, desc: 'Elite badge on dashboard.' },
+      { id: 'specialist', name: 'Assessment Specialist', price: 12000, desc: 'Custom badge.' },
+      { id: 'slayer', name: 'Exam Slayer', price: 8000, desc: 'Custom badge.' },
+      { id: 'certified', name: 'Certified Reviewer', price: 6000, desc: 'Custom badge.' },
+      { id: 'memory', name: 'Memory Master', price: 4000, desc: 'Custom badge.' },
+      { id: 'apprentice', name: 'Psychology Apprentice', price: 2000, desc: 'Custom badge.' }
+    ],
+    avatars: [
+      { id: 'lightning', name: '⚡ Lightning Mind Avatar', price: 7500, desc: 'Fast-thinker icon.' },
+      { id: 'professor', name: '🎓 Professor Hat Avatar', price: 5000, desc: 'Wise scholar icon.' },
+      { id: 'owl', name: '🧠 Brainy Owl Avatar', price: 3500, desc: 'Clever intellectual icon.' }
+    ]
+  };
+
+  const optionsConfig = {
+    category: [{ label: "All Categories", value: "all" }],
+    subcategory: [{ label: "All Sub-Categories", value: "all" }],
+    'ro-category': [{ label: "All Categories", value: "all" }],
+    'ro-subcategory': [{ label: "All Sub-Categories", value: "all" }],
+    order: [{ label: "Randomized (Shuffled)", value: "random" }, { label: "In Order (Sequential)", value: "sequential" }]
+  };
+
+  let selections = { category: "all", subcategory: "all", 'ro-category': "all", 'ro-subcategory': "all", order: "random" };
+  let activeQuestions = [], currentQuestionIndex = 0, score = 0, totalQuizCount = 0, totalNoteCount = 0;
+  let streak = 0, maxSessionStreak = 0, sessionPoints = 0, incorrectQuestions = [], userAnswersState = {};
+  let currentAnswerType = 'id', isQuizInProgress = false, isRetakeMode = false, activeShieldInSession = false, activeDoubleXPInSession = false;
+
+  window.onload = function() {
+    initCategories();
+    updateSubCategoryOptions('main');
+    updateSubCategoryOptions('ro');
+    loadGlobalRecords();
+    checkAuthentication();
+  };
+
+  function initCategories() {
+    let cats = new Set();
+    if (typeof questionBank !== 'undefined') {
+      questionBank.forEach(q => { if (q.category) cats.add(q.category); });
+    }
+    cats.forEach(cat => {
+      optionsConfig.category.push({ label: cat, value: cat });
+      optionsConfig['ro-category'].push({ label: cat, value: cat });
+    });
+  }
+
+  function loadGlobalRecords() {
+    try {
+      walletXP = parseInt(localStorage.getItem('quizReviewerWalletXP') || '0', 10);
+      highestStreak = parseInt(localStorage.getItem('quizReviewerHighestStreak') || '0', 10);
+      highestPointsRecord = parseInt(localStorage.getItem('quizReviewerHighestPoints') || '0', 10);
+    } catch(e) {}
+    document.getElementById('home-highest-streak').textContent = highestStreak;
+    document.getElementById('home-total-points').textContent = `${highestPointsRecord} XP`;
+    document.getElementById('home-wallet-xp').textContent = `${walletXP} XP`;
+  }
+
+  function checkAuthentication() {
+    if (localStorage.getItem('quizReviewerUnlocked') === 'true') {
+      showScreen('home-screen');
+    } else {
+      showScreen('auth-screen');
+    }
+  }
+
+  function verifyPasscode() {
+    const input = document.getElementById('passcode-input').value;
+    if (input === PASSCODE) {
+      localStorage.setItem('quizReviewerUnlocked', 'true');
+      showScreen('home-screen');
+      loadGlobalRecords();
+    } else {
+      document.getElementById('auth-error-msg').style.display = 'block';
+    }
+  }
+
+  function showScreen(id) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+
+  function goToHome() { showScreen('home-screen'); loadGlobalRecords(); }
+  function showAlert(msg) { document.getElementById('custom-alert-msg').textContent = msg; document.getElementById('custom-alert-modal').classList.add('active'); }
+  function closeAlertModal() { document.getElementById('custom-alert-modal').classList.remove('active'); }
+  function closeModal(e, id) { document.getElementById(id).classList.remove('active'); }
+
+  function openCustomModal(type) {
+    const modalList = document.getElementById('custom-options-list');
+    modalList.innerHTML = '';
+    optionsConfig[type].forEach(item => {
+      const div = document.createElement('div');
+      div.className = 'modal-option';
+      div.innerHTML = `<span>${item.label}</span><div class="radio-circle"></div>`;
+      div.onclick = () => {
+        selections[type] = item.value;
+        document.getElementById(`${type}-trigger`).textContent = item.label;
+        if (type === 'category') updateSubCategoryOptions('main');
+        if (type === 'ro-category') updateSubCategoryOptions('ro');
+        document.getElementById('custom-select-modal').classList.remove('active');
+      };
+      modalList.appendChild(div);
+    });
+    document.getElementById('custom-select-modal').classList.add('active');
+  }
+
+  function updateSubCategoryOptions(mode) {
+    const isRO = (mode === 'ro');
+    const cat = selections[isRO ? 'ro-category' : 'category'];
+    const trig = document.getElementById(isRO ? 'ro-subcategory-trigger' : 'subcategory-trigger');
+    if (cat === 'all') { trig.classList.add('disabled'); return; }
+    trig.classList.remove('disabled');
+  }
+
+  function openShopModal() { document.getElementById('shop-wallet-balance').textContent = walletXP; switchShopTab('powerups'); document.getElementById('shop-modal').classList.add('active'); }
+  function closeShopModal() { document.getElementById('shop-modal').classList.remove('active'); }
+  function switchShopTab(tab) {
+    activeShopTab = tab;
+    document.querySelectorAll('.shop-tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(`tab-${tab}`).classList.add('active');
+    const list = document.getElementById('shop-items-list');
+    list.innerHTML = '';
+    shopCatalog[tab].forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'shop-item-card';
+      card.innerHTML = `<div class="shop-item-info"><h4>${item.name}</h4><p>${item.desc}</p><div class="shop-item-price">🪙 ${item.price} XP</div></div><button class="btn shop-buy-btn" onclick="showAlert('Feature ready!')">Buy</button>`;
+      list.appendChild(card);
+    });
+  }
+
+  function openSpinScreen() { document.getElementById('spin-wallet-balance').textContent = walletXP; showScreen('spin-screen'); }
+  function spinTheWheel() {
+    if (walletXP < 500) { showAlert("Not enough XP!"); return; }
+    walletXP -= 500;
+    localStorage.setItem('quizReviewerWalletXP', walletXP);
+    document.getElementById('spin-wallet-balance').textContent = walletXP;
+    document.getElementById('spin-result-box').textContent = "🎉 You won +500 XP back!";
+  }
+
+  function openReviewOnlyMode() { showScreen('review-only-screen'); renderReviewOnlyTerms(); }
+  function renderReviewOnlyTerms() {
+    const c = document.getElementById('terms-list-container');
+    c.innerHTML = '';
+    questionBank.forEach(q => {
+      const card = document.createElement('div');
+      card.className = 'term-card';
+      card.innerHTML = `<span class="term-card-title">${q.question}</span><span class="term-card-badge">${q.category}</span>`;
+      card.onclick = () => {
+        document.getElementById('term-detail-title').textContent = q.question;
+        document.getElementById('term-detail-text').innerHTML = q.notes || "No notes.";
+        showScreen('term-detail-screen');
+      };
+      c.appendChild(card);
+    });
+    document.getElementById('ro-count').textContent = questionBank.length;
+  }
+
+  function startQuiz(retake) {
+    isRetakeMode = retake;
+    activeQuestions = [...questionBank];
+    totalQuizCount = activeQuestions.filter(q => q.type === 'quiz').length;
+    totalNoteCount = activeQuestions.filter(q => q.type === 'note').length;
+    currentQuestionIndex = 0; score = 0; streak = 0; sessionPoints = 0;
+    showScreen('quiz-screen');
+    loadItem();
+  }
+
+  function loadItem() {
+    const q = activeQuestions[currentQuestionIndex];
+    document.getElementById('question-text').textContent = q.question;
+    document.getElementById('category-badge').textContent = q.category;
+    if (q.type === 'note') {
+      document.getElementById('identification-container').style.display = 'none';
+      document.getElementById('notes-only-container').style.display = 'block';
+      document.getElementById('notes-only-text').innerHTML = q.notes;
+    } else {
+      document.getElementById('notes-only-container').style.display = 'none';
+      document.getElementById('identification-container').style.display = 'block';
+    }
+    document.getElementById('next-btn').style.display = 'inline-block';
+  }
+
+  function nextQuestion() {
+    currentQuestionIndex++;
+    if (currentQuestionIndex < activeQuestions.length) {
+      loadItem();
+    } else {
+      showScreen('result-screen');
+      document.getElementById('score-display').textContent = `${score} / ${totalQuizCount}`;
+    }
+  }
+
+  function submitIdentification() {
+    const ans = document.getElementById('identification-input').value.trim();
+    const q = activeQuestions[currentQuestionIndex];
+    if (ans.toLowerCase() === q.correctAnswer.toLowerCase()) {
+      showAlert("Correct!");
+      score++;
+    } else {
+      showAlert(`Incorrect. Correct was: ${q.correctAnswer}`);
+    }
+    nextQuestion();
+  }
+
+  function openAchievementsModal() { document.getElementById('achievements-modal').classList.add('active'); }
+  function closeAchievementsModal() { document.getElementById('achievements-modal').classList.remove('active'); }
+  function toggleDarkMode() { document.body.classList.toggle('theme-dark'); }
+</script>
+</body>
+</html>
