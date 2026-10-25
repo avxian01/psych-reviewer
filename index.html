@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@400;600;700&family=Roboto:wght@400;500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- MathJax para sa magandang pormat ng formulas at symbols -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <style>
     :root {
       --primary: #6366f1;
@@ -1728,6 +1730,14 @@
     renderReviewOnlyTerms();
   }
 
+  function cleanMathText(text) {
+    if (!text) return "";
+    return String(text)
+      .replace(/\[span_\d+\]\((?:start_span|end_span)\)/g, '')
+      .replace(/\[span_\d+\]\s*\((?:start_span|end_span)\)/g, '')
+      .replace(/\\+\$/g, '$');
+  }
+
   function renderReviewOnlyTerms() {
     const listContainer = document.getElementById('terms-list-container');
     listContainer.innerHTML = '';
@@ -1753,7 +1763,7 @@
       
       const titleSpan = document.createElement('span');
       titleSpan.className = 'term-card-title';
-      titleSpan.textContent = (q.type === 'note') ? q.question : (q.correctAnswer || q.question);
+      titleSpan.textContent = cleanMathText((q.type === 'note') ? q.question : (q.correctAnswer || q.question));
 
       const badgeSpan = document.createElement('span');
       badgeSpan.className = 'term-card-badge';
@@ -1769,7 +1779,7 @@
   }
 
   function openTermDetailScreen(q) {
-    const titleText = (q.type === 'note') ? q.question : (q.correctAnswer || q.question);
+    const titleText = cleanMathText((q.type === 'note') ? q.question : (q.correctAnswer || q.question));
     document.getElementById('term-detail-title').textContent = titleText;
     document.getElementById('term-detail-category-badge').textContent = `${q.category} • ${q.subCategory || 'General'}`;
     
@@ -1821,7 +1831,7 @@
 
       const titleSpan = document.createElement('span');
       titleSpan.className = 'term-card-title';
-      titleSpan.textContent = q.question || q.correctAnswer;
+      titleSpan.textContent = cleanMathText(q.question || q.correctAnswer);
 
       const removeBtn = document.createElement('button');
       removeBtn.className = 'custom-item-action-btn remove-btn';
@@ -1882,7 +1892,7 @@
 
       const titleSpan = document.createElement('span');
       titleSpan.className = 'term-card-title';
-      titleSpan.textContent = q.question;
+      titleSpan.textContent = cleanMathText(q.question);
 
       const addBtn = document.createElement('button');
       addBtn.className = `custom-item-action-btn ${isAlreadyAdded ? 'remove-btn' : 'add-btn'}`;
@@ -2165,7 +2175,17 @@
     }
 
     document.getElementById('category-badge').textContent = `${currentItem.category} • ${currentItem.subCategory || 'General'}`;
-    document.getElementById('question-text').textContent = currentItem.question;
+    
+    // Nililinaw ang tanong gamit ang cleanMathText at tsaka pinapatakbuhan ng MathJax
+    const qTextContainer = document.getElementById('question-text');
+    const cleanedQText = cleanMathText(currentItem.question);
+    
+    const hasRichHtml = /<(table|thead|tbody|tr|th|td|ul|ol|li|p|h[1-6]|strong|b|em|i|br)\b/i.test(cleanedQText);
+    if (hasRichHtml) {
+      qTextContainer.innerHTML = cleanedQText;
+    } else {
+      qTextContainer.textContent = cleanedQText;
+    }
 
     const progressPercent = ((currentQuestionIndex) / activeQuestions.length) * 100;
     document.getElementById('progress-bar').style.width = `${progressPercent}%`;
@@ -2214,6 +2234,15 @@
       } else {
         document.getElementById('view-notes-btn').style.display = 'none';
         document.getElementById('next-btn').style.display = 'none';
+      }
+    }
+
+    // MathJax typeset para sa buong quiz area sakaling may formulas ang tanong
+    if (window.MathJax) {
+      if (window.MathJax.typesetPromise) {
+        window.MathJax.typesetPromise([qTextContainer]).catch((err) => {});
+      } else if (window.MathJax.typeset) {
+        window.MathJax.typeset([qTextContainer]);
       }
     }
 
@@ -2270,10 +2299,19 @@
     currentItem.choices.forEach(choice => {
       const btn = document.createElement('button');
       btn.className = 'option-btn';
-      btn.textContent = choice;
+      const cleanedChoice = cleanMathText(choice);
+      btn.textContent = cleanedChoice;
       btn.onclick = () => checkAnswer(choice, btn);
       container.appendChild(btn);
     });
+
+    if (window.MathJax) {
+      if (window.MathJax.typesetPromise) {
+        window.MathJax.typesetPromise([container]).catch((err) => {});
+      } else if (window.MathJax.typeset) {
+        window.MathJax.typeset([container]);
+      }
+    }
   }
 
   function calculateGainedPoints(mode, currentStreak) {
@@ -2435,7 +2473,7 @@
     } else if (state.selectedChoice) {
       const buttons = document.querySelectorAll('.option-btn');
       buttons.forEach(btn => {
-        if (btn.textContent.trim() === state.selectedChoice && !state.isCorrect) {
+        if (btn.textContent.trim() === cleanMathText(state.selectedChoice) && !state.isCorrect) {
           btn.classList.add('incorrect');
         }
       });
@@ -2459,9 +2497,7 @@
   }
 
   function renderNotesContent(container, notes) {
-    const value = String(notes || "No notes available.")
-      .replace(/\[span_\d+\]\((?:start_span|end_span)\)/g, '')
-      .replace(/\[span_\d+\]\s*\((?:start_span|end_span)\)/g, '');
+    let value = cleanMathText(notes);
 
     const hasRichHtml = /<(table|thead|tbody|tr|th|td|ul|ol|li|p|h[1-6]|strong|b|em|i|br)\b/i.test(value);
 
@@ -2471,6 +2507,14 @@
     } else {
       container.textContent = value;
       container.style.whiteSpace = 'pre-wrap';
+    }
+
+    if (window.MathJax) {
+      if (window.MathJax.typesetPromise) {
+        window.MathJax.typesetPromise([container]).catch((err) => {});
+      } else if (window.MathJax.typeset) {
+        window.MathJax.typeset([container]);
+      }
     }
   }
 
@@ -2520,7 +2564,6 @@
       document.getElementById('continue-btn').style.display = 'none';
       document.getElementById('start-btn').textContent = 'Start Review';
 
-      // Kapag PURO NOTES lang ang binabasa (zero quiz questions):
       if (totalQuizCount === 0) {
         document.getElementById('notes-completed-modal').classList.add('active');
       } else {

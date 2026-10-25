@@ -579,7 +579,7 @@ const questionBank = [
         "Stratified Sampling",
         "Simple Random Sampling"
   ],
-  correctAnswer: "Incidental Sampling (Convenience Sampling)",
+  correctAnswer: "Incidental Sampling",
   notes: `<b>INCIDENTAL SAMPLING (CONVENIENCE SAMPLING)</b><br><br><b>Definition:</b><br><br>A sampling method that involves selecting participants based on their accessibility and availability to the researcher.<br><br><b>Explanation:</b><br><br>The researcher chooses people who are easy to reach or readily available. This method may be used because of budget limitations or other research constraints.<br><br><b>Example:</b><br><br>A researcher wants to study students' test anxiety and surveys students who are available in the school cafeteria.<br><br><b>What to Remember for CFE:</b><br><ul><li>Participants are selected based on accessibility and availability.</li><li>The researcher chooses people who are easiest to reach.</li><li>It may be used because of limited time, budget, or other constraints.</li><li>It is a non-probability sampling method.</li></ul><b>Situational Application:</b><br><br><b>Situation:</b> A psychology student needs participants for a research project but has a limited budget. The student surveys classmates who are available and willing to participate.<br><br><b>Answer:</b> Incidental Sampling (Convenience Sampling)<br><br><b>Why?</b> Participants are chosen based purely on their immediate availability, accessibility, and ease of reach rather than random selection or strict subgroup representation.<br><br><b>CFE Tip: How to Recognize It:</b><br><br>Look for clues such as easily accessible, readily available, nearby participants, or limited time and budget.<br><br><b>Memory Trick:</b><br><br><b>Convenience = Choose Whoever Is Convenient to Reach.</b>`
 },
 {
@@ -650,5 +650,920 @@ const questionBank = [
 
 </div>
 `
+},
+{
+  type: "quiz",
+  category: "06 - RESEARCH METHODS AND STATISTICS",
+  subCategory: "RESEARCH DESIGNS",
+  question: "A researcher investigates whether a new teaching method improves students' test scores by actively manipulating the teaching technique (Independent Variable) and measuring the resulting scores (Dependent Variable) to establish causality. What research design is being used?",
+  choices: [
+        "Correlational Design",
+        "Experimental Design",
+        "Descriptive Design",
+        "Quasi-Experimental Design"
+  ],
+  correctAnswer: "Experimental Design",
+  notes: `<b>EXPERIMENTAL DESIGN</b><br><br><b>Definition:</b><br><br>An experimental design establishes cause-and-effect relationships between variables by manipulating one or more independent variables and observing their impact on a dependent variable.<br><br><b>Explanation:</b><br><br>The researcher changes or controls a factor to determine whether it causes a change in the outcome being measured.<br><ul><li><b>Independent Variable (IV):</b> The factor the researcher manipulates.</li><li><b>Dependent Variable (DV):</b> The outcome the researcher measures.</li></ul><b>Example:</b><br><br>A psychologist wants to know whether sleep affects memory. The researcher assigns participants to different sleep conditions and measures their memory performance.<br><ul><li><b>IV:</b> Sleep condition</li><li><b>DV:</b> Memory performance</li></ul><b>What to Remember for CFE:</b><br><ul><li>The researcher manipulates the independent variable.</li><li>The researcher measures the effect on the dependent variable.</li><li>It is used to investigate cause-and-effect relationships.</li></ul><b>Situational Application:</b><br><br><b>Situation:</b> A researcher investigates whether a new teaching method improves students' test scores. The researcher uses different teaching methods and measures the students' scores afterward.<br><br><b>Answer:</b> Experimental Design<br><br><b>Why?</b> It actively manipulates an independent variable to determine its causal impact on a dependent variable.<br><br><b>CFE Tip: How to Recognize It:</b><br><br>Look for clues such as manipulating a variable, measuring the effect, independent variable, dependent variable, or cause and effect.<br><br><b>Memory Trick:</b><br><br><b>Experiment = Manipulate → Measure → Find the Effect.</b>`
+},
+{
+  type: "quiz",
+  category: "06 - RESEARCH METHODS AND STATISTICS",
+  subCategory: "RESEARCH DESIGNS",
+  question: "A researcher wants to study potential cause-and-effect relationships by comparing two existing groups of participants in a real-world setting, but true random assignment is not feasible or ethical because intact groups must be used. What research design is being utilized?",
+  choices: [
+        "Experimental Design",
+        "Correlational Design",
+        "Descriptive Design",
+        "Quasi-Experimental Design"
+  ],
+  correctAnswer: "Quasi-Experimental Design",
+  notes: `<b>QUASI-EXPERIMENTAL DESIGN</b><br><br><b>Definition:</b><br><br>A research design used to infer cause-and-effect relationships when true random assignment is not feasible or ethical, such as in real-world educational or clinical settings where intact groups must be used.<br><br><b>Explanation:</b><br><br>Researchers study whether something causes a change, but they cannot randomly assign participants to groups. Instead, they use existing groups, such as two classrooms or two groups of patients.<br><br><b>Example:</b><br><br>A researcher compares the test scores of two existing classrooms. One classroom uses a new teaching method, while the other uses the usual method. Since students were not randomly assigned to the classrooms, this is a quasi-experimental design.<br><br><b>What to Remember for CFE:</b><br><ul><li>Studies possible cause-and-effect relationships.</li><li>True random assignment is not feasible or ethical.</li><li>Often uses existing or intact groups.</li><li>Common in real-world educational and clinical settings.</li></ul><b>Situational Application:</b><br><br><b>Situation:</b> A psychologist evaluates a new counseling program by comparing stress levels between two existing groups of students without randomly assigning students to each group.<br><br><b>Answer:</b> Quasi-Experimental Design<br><br><b>Why?</b> It investigates cause and effect using pre-existing or intact groups since true random assignment is absent.<br><br><b>CFE Tip: How to Recognize It:</b><br><br>Look for a study that examines cause and effect but uses existing groups without true random assignment.<br><br><b>Memory Trick:</b><br><br><b>Quasi = Almost experimental. It studies cause and effect, but true random assignment is missing.</b>`
+},
+{
+  type: "quiz",
+  category: "06 - RESEARCH METHODS AND STATISTICS",
+  subCategory: "RESEARCH DESIGNS",
+  question: "A researcher investigates whether stress levels are related to sleep duration among college students by measuring both variables as they naturally occur, without any intervention or manipulation. What research design is being used?",
+  choices: [
+        "Experimental Design",
+        "Quasi-Experimental Design",
+        "Correlational Design",
+        "Descriptive Design"
+  ],
+  correctAnswer: "Correlational Design",
+  notes: `<b>CORRELATIONAL DESIGN</b><br><br><b>Definition:</b><br><br>A research design that measures the strength and direction of relationships between two or more variables as they naturally occur, without intervention or manipulation by the researcher.<br><br><b>Explanation:</b><br><br>Researchers examine whether variables are related and how they change in relation to one another. They do not manipulate the variables; they simply measure and observe them.<br><br>A correlation may be:<ul><li><b>Positive:</b> Both variables tend to increase or decrease together.</li><li><b>Negative:</b> As one variable increases, the other tends to decrease.</li><li><b>Zero or no correlation:</b> No clear relationship is found between the variables.</li></ul><b>Example:</b><br><br>A researcher studies the relationship between students' study hours and exam scores. The researcher records both variables without changing the students' study habits.<br><br><b>What to Remember for CFE:</b><ul><li>Examines relationships between two or more variables.</li><li>Measures the strength and direction of a relationship.</li><li>Variables are observed as they naturally occur.</li><li>No intervention or manipulation by the researcher.</li><li><b>Correlation does not prove causation.</b> A relationship between two variables does not automatically mean one causes the other.</li></ul><b>Situational Application:</b><br><br><b>Situation:</b> A psychologist investigates whether stress levels are related to sleep duration among college students. The psychologist measures both variables without manipulating them.<br><br><b>Answer:</b> Correlational Design<br><br><b>Why?</b> It measures the association and natural relationship between variables without introducing experimental manipulation or inferring direct causation.<br><br><b>CFE Tip: How to Recognize It:</b><br><br>Look for clues such as relationship, association, strength, direction, or variables observed without manipulation.<br><br><b>Memory Trick:</b><br><br><b>Correlation = Connection, not Cause.</b> It examines whether variables are related, not whether one causes the other.`
+},
+{
+  type: "quiz",
+  category: "06 - RESEARCH METHODS AND STATISTICS",
+  subCategory: "RESEARCH DESIGNS",
+  question: "A psychologist distributes questionnaires and conducts interviews with a large sample of students to gather data on their attitudes, opinions, and study habits, aiming to describe the characteristics of the broader student population. What research design is being used?",
+  choices: [
+        "Survey Design",
+        "Experimental Design",
+        "Correlational Design",
+        "Quasi-Experimental Design"
+  ],
+  correctAnswer: "Survey Design",
+  notes: `<b>SURVEY DESIGN</b><br><br><b>Definition:</b><br><br>A research design that gathers data from a sample of individuals, often a large group, through questionnaires or interviews to describe the characteristics, opinions, or behaviors of a larger population.<br><br><b>Explanation:</b><br><br>Researchers ask people questions to collect information about their opinions, experiences, attitudes, or behaviors. They use the answers to understand the larger group that the participants represent.<br><br><b>Example:</b><br><br>A researcher gives questionnaires to college students to find out their opinions about online learning and their study habits.<br><br><b>What to Remember for CFE:</b><br><ul><li>Collects information from a sample of individuals.</li><li>Commonly uses questionnaires or interviews.</li><li>Describes people's characteristics, opinions, or behaviors.</li><li>Often involves a large number of participants.</li><li>Aims to understand a larger population through the sample.</li></ul><b>Situational Application:</b><br><br><b>Situation:</b> A psychologist interviews 500 students to learn about their stress levels and coping methods, using their answers to describe the experiences of students in the school.<br><br><b>Answer:</b> Survey Design<br><br><b>Why?</b> It specifically utilizes questionnaires or interviews to collect self-reported data from a sample to describe population characteristics.<br><br><b>CFE Tip: How to Recognize It:</b><br><br>Look for clues such as questionnaires, interviews, opinions, attitudes, behaviors, or collecting responses from many people.<br><br><b>Memory Trick:</b><br><br><b>Survey = Ask and Describe.</b> Researchers ask people questions and use their answers to describe a population.`
+},
+{
+  type: "quiz",
+  category: "06 - RESEARCH METHODS AND STATISTICS",
+  subCategory: "RESEARCH DESIGNS",
+  question: "A psychologist measures the stress levels of the exact same group of students every year throughout their undergraduate education to track individual developmental changes and long-term trends over time. What research design is being used?",
+  choices: [
+        "Cross-Sectional Design",
+        "Longitudinal Design",
+        "Survey Design",
+        "Experimental Design"
+  ],
+  correctAnswer: "Longitudinal Design",
+  notes: `<b>LONGITUDINAL DESIGN</b><br><br><b>Definition:</b><br><br>A research design that observes and tracks changes or developments within the same individuals or groups over an extended period.<br><br><b>Explanation:</b><br><br>Researchers study the same people or groups repeatedly over time to understand how they change or develop. This design can help identify developmental trends, stability, and long-term effects.<br><br><b>Example:</b><br><br>A researcher studies the same group of children every year for 10 years to observe changes in their cognitive abilities and emotional development.<br><br><b>What to Remember for CFE:</b><br><ul><li>Studies the same individuals or groups.</li><li>Data are collected over an extended period.</li><li>Focuses on changes and development over time.</li><li>Can examine developmental trends, stability, and long-term effects.</li></ul><b>Situational Application:</b><br><br><b>Situation:</b> A psychologist measures the stress levels of the same students every year throughout their college education to determine how their stress changes over time.<br><br><b>Answer:</b> Longitudinal Design<br><br><b>Why?</b> It involves following and repeatedly assessing the exact same cohort of participants across an extended timeframe to evaluate developmental trajectories and changes.<br><br><b>CFE Tip: How to Recognize It:</b><br><br>Look for clues such as same participants, repeated observations, several years, changes over time, or long-term effects.<br><br><b>Memory Trick:</b><br><br><b>Longitudinal = Long time, same people.</b>`
+},
+{
+  type: "quiz",
+  category: "06 - RESEARCH METHODS AND STATISTICS",
+  subCategory: "RESEARCH DESIGNS",
+  question: "A psychologist compares the anxiety levels of teenagers, adults, and older adults by collecting data from all three age groups during the same month, providing a comparative snapshot without tracking participants over time. What research design is being used?",
+  choices: [
+        "Longitudinal Design",
+        "Cross-Sectional Design",
+        "Experimental Design",
+        "Survey Design"
+  ],
+  correctAnswer: "Cross-Sectional Design",
+  notes: `<b>CROSS-SECTIONAL DESIGN</b><br><br><b>Definition:</b><br><br>A research design that gathers data from different individuals or groups at a single point in time, providing a snapshot of a population or phenomenon.<br><br><b>Explanation:</b><br><br>Researchers collect information from different people at one specific time. They do not follow the same participants over a long period. This design helps describe and compare people or groups at that moment.<br><br><b>Example:</b><br><br>A researcher measures the stress levels of first-year, second-year, and third-year college students during the same week to compare their stress levels.<br><br><b>What to Remember for CFE:</b><br><ul><li>Data are collected at one point in time.</li><li>Different individuals or groups may be compared.</li><li>It provides a snapshot of a population or phenomenon.</li><li>It does not track changes in the same participants over an extended period.</li></ul><b>Situational Application:</b><br><br><b>Situation:</b> A psychologist compares the anxiety levels of teenagers, adults, and older adults by collecting data from all three age groups during the same month.<br><br><b>Answer:</b> Cross-Sectional Design<br><br><b>Why?</b> It captures a single-point-in-time snapshot, comparing different age groups or cohorts simultaneously rather than tracking the same participants longitudinally.<br><br><b>CFE Tip: How to Recognize It:</b><br><br>Look for clues such as:<br><ul><li>“At one point in time”</li><li>“Snapshot”</li><li>“Different age groups compared at the same time”</li><li>“Data collected during the same period”</li></ul><b>Memory Trick:</b><br><br><b>Cross-Sectional = Snapshot.</b> It studies different people or groups at one point in time.`
+},
+{
+  type: "quiz",
+  category: "06 - RESEARCH METHODS AND STATISTICS",
+  subCategory: "4 LEVELS OF SCALES OF MEASUREMENT",
+  question: "A researcher classifies participants into different categories based on their blood type (Type A, Type B, Type AB, Type O) without any numerical ranking or order between the categories. What level of measurement is being used?",
+  choices: [
+        "Ordinal Scale",
+        "Interval Scale",
+        "Ratio Scale",
+        "Nominal Scale"
+  ],
+  correctAnswer: "Nominal Scale",
+  notes: `<b>NOMINAL SCALE</b><br><br><b>Definition:</b><br><br>A nominal scale is a level of measurement used to classify data into different categories or groups without any order or ranking.<br><br><b>Explanation:</b><br><br>Nominal scales are used to identify or name categories. The categories are different, but one category is not higher, lower, better, or worse than another. Even if numbers are assigned to the categories, those numbers are only labels.<br><br><b>Example:</b><br><br>A psychologist classifies participants according to their blood type:<br><ul><li>Type A</li><li>Type B</li><li>Type AB</li><li>Type O</li></ul>These categories have no ranking or order.<br><br><b>What to Remember for CFE:</b><br><ul><li>Used for classification or naming.</li><li>Categories have no order or ranking.</li><li>Numbers assigned to categories are labels, not quantities.</li><li>The mode is an appropriate measure of central tendency for nominal data.</li></ul><b>Situational Application:</b><br><br><b>Situation:</b> A researcher records each student's preferred learning method: visual, auditory, or hands-on. Since these are categories without a natural ranking, the researcher is using a nominal scale.<br><br><b>Answer:</b> Nominal Scale<br><br><b>Why?</b> It categorizes data into discrete, labeled groups where numerical values or names carry no quantitative value, order, or hierarchy.<br><br><b>CFE Tip: How to Recognize It:</b><br><br>Look for clues such as:<br><ul><li>Categories or labels</li><li>No ranking or order</li><li>Gender, blood type, religion, or preferred learning method</li><li>Numbers used only as category codes</li></ul><b>Memory Trick:</b><br><br><b>Nominal = Name only.</b> It tells you which category something belongs to, not its rank or amount.`
+},
+{
+  type: "quiz",
+  category: "06 - RESEARCH METHODS AND STATISTICS",
+  subCategory: "4 LEVELS OF SCALES OF MEASUREMENT",
+  question: "A researcher asks participants to rate their level of job satisfaction as dissatisfied, neutral, or satisfied. These responses have a meaningful sequence and ranking, but the exact numerical distance or interval between the satisfaction levels is not known. What level of measurement is being used?",
+  choices: [
+        "Nominal Scale",
+        "Ordinal Scale",
+        "Interval Scale",
+        "Ratio Scale"
+  ],
+  correctAnswer: "Ordinal Scale",
+  notes: `<b>ORDINAL SCALE</b><br><br><b>Definition:</b><br><br>An ordinal scale is a level of measurement used to classify data into categories that can be ranked or arranged in order.<br><br><b>Explanation:</b><br><br>Unlike a nominal scale, an ordinal scale shows which category is higher, lower, first, or last. However, it does not tell us whether the differences between the ranks are equal.<br><br><b>Example:</b><br><br>Students are ranked according to their performance:<ul><li>1st place</li><li>2nd place</li><li>3rd place</li></ul>The ranks show the order of performance, but they do not tell us the exact difference in ability between the students.<br><br><b>What to Remember for CFE:</b><br><ul><li>Categories have a meaningful order or ranking.</li><li>The exact differences between ranks are not necessarily equal or known.</li><li>The median can be used as a measure of central tendency for ordinal data.</li><li>Nominal = categories without order; Ordinal = categories with order.</li></ul><b>Situational Application:</b><br><br><b>Situation:</b> A researcher asks participants to rate their satisfaction as dissatisfied, neutral, or satisfied.<br><br><b>Answer:</b> Ordinal Scale<br><br><b>Why?</b> The responses can be meaningfully ordered or ranked, but the exact distance or interval between the satisfaction categories is unknown and not necessarily equal.<br><br><b>CFE Tip: How to Recognize It:</b><br><br>Look for clues such as:<ul><li>Ranking or ordering</li><li>First, second, and third place</li><li>Low, moderate, and high</li><li>Satisfaction ratings from dissatisfied to satisfied</li></ul><b>Memory Trick:</b><br><br><b>Ordinal = Order.</b> The categories can be ranked, but the distance between them is not necessarily equal.`
+},
+{
+  type: "quiz",
+  category: "06 - RESEARCH METHODS AND STATISTICS",
+  subCategory: "4 LEVELS OF SCALES OF MEASUREMENT",
+  question: "A researcher measures students' IQ scores and notes that the difference between scores of 100 and 110 is equal to the difference between 110 and 120, but an IQ score of zero does not represent a complete absence of intelligence. What level of measurement is being used?",
+  choices: [
+        "Interval Scale",
+        "Ordinal Scale",
+        "Ratio Scale",
+        "Nominal Scale"
+  ],
+  correctAnswer: "Interval Scale",
+  notes: `<b>INTERVAL SCALE</b><br><br><b>Definition:</b><br><br>A level of measurement in which data are arranged in order, and the differences between values are equal. However, it has no true zero point.<br><br><b>Explanation:</b><br><br>An interval scale shows both the order of values and the exact difference between them. However, zero does not mean that the characteristic being measured is completely absent.<br><br><b>Example:</b><br><ul><li><b>Temperature in Celsius:</b> The difference between 10°C and 20°C is the same as the difference between 20°C and 30°C. However, 0°C does not mean there is no temperature.</li><li><b>IQ scores:</b> The difference between IQ scores of 90 and 100 is the same as the difference between 100 and 110.</li></ul><b>What to Remember for CFE:</b><br><ul><li>Values have a clear order.</li><li>Differences between values are equal.</li><li>It has no true zero point.</li><li>Addition and subtraction are meaningful, but ratios are not interpreted meaningfully. For example, 40°C is not twice as hot as 20°C.</li></ul><b>Situational Application:</b><br><br><b>Situation:</b> A researcher measures students' IQ scores. The difference between scores of 100 and 110 is equal to the difference between 110 and 120. However, an IQ score of zero does not represent a complete absence of intelligence.<br><br><b>Answer:</b> Interval Scale<br><br><b>Why?</b> It features ordered values with equal intervals between them, but lacks an absolute or true zero point.<br><br><b>CFE Tip: How to Recognize It:</b><br><br>Look for:<ul><li>Equal intervals or equal differences between values.</li><li>No true zero point.</li><li>Examples such as Celsius temperature and IQ scores.</li></ul><b>Memory Trick:</b><br><br><b>Interval = Equal Intervals, No True Zero.</b>`
+},
+{
+  type: "quiz",
+  category: "06 - RESEARCH METHODS AND STATISTICS",
+  subCategory: "4 LEVELS OF SCALES OF MEASUREMENT",
+  question: "A researcher measures how long students take to finish a psychological test, noting that Student B took 10 minutes—twice as long as Student A who finished in 5 minutes—and that a value of zero represents a complete absence of time. What level of measurement is being used?",
+  choices: [
+        "Ordinal Scale",
+        "Interval Scale",
+        "Ratio Scale",
+        "Nominal Scale"
+  ],
+  correctAnswer: "Ratio Scale",
+  notes: `<b>RATIO SCALE</b><br><br><b>Definition:</b><br><br>A level of measurement in which data have an order, equal intervals between values, and a true zero point.<br><br><b>Explanation:</b><br><br>A ratio scale has all the properties of an interval scale, but it also has a true zero. Zero means that the quantity being measured is completely absent. Because of this, values can be compared using ratios.<br><br><b>Example:</b><br><ul><li><b>Reaction time:</b> A person takes 2 seconds to respond, while another takes 4 seconds. The second person's reaction time is twice as long.</li><li><b>Age:</b> A person who is 20 years old is twice as old as a person who is 10 years old.</li><li><b>Number of errors:</b> A student makes 0 errors, meaning no errors were made.</li></ul><b>What to Remember for CFE:</b><br><ul><li>Values can be arranged in order.</li><li>Differences between values are equal.</li><li>It has a true zero point.</li><li>Both differences and ratios are meaningful.</li><li>Common examples include time, age, distance, weight, and number of errors.</li></ul><b>Situational Application:</b><br><br><b>Situation:</b> A researcher measures how long students take to finish a psychological test. Student A finishes in 5 minutes, while Student B finishes in 10 minutes. Student B took twice as long as Student A.<br><br><b>Answer:</b> Ratio Scale<br><br><b>Why?</b> It includes order, equal intervals, and an absolute/true zero point, allowing for meaningful ratio comparisons (such as \"twice as long\").<br><br><b>CFE Tip: How to Recognize It:</b><br><br>Look for:<ul><li>A true zero, meaning none of the quantity is present.</li><li>Equal intervals between values.</li><li>Statements such as “twice as much” or “half as long.”</li><li>Examples involving time, age, distance, or weight.</li></ul><b>Memory Trick:</b><br><br><b>Ratio = Equal Intervals + True Zero.</b>`
+},
+{
+    type: "note",
+    category: "NOTES",
+    subCategory: "FREQUENCY DISTRIBUTIONS & GRAPHICAL REPRESENTATIONS",
+    question: "Frequency Distributions & Graphical Representations",
+    notes: `
+<div style="font-family:Arial,sans-serif;color:#111;background:#f9faff;border:4px dashed #193eae;padding:12px;box-sizing:border-box;width:100%;font-size:15px;line-height:1.55;overflow-wrap:anywhere;">
+
+    <div style="margin-bottom:12px;">
+        <b style="color:#193eae;font-size:16px;">Frequency Distributions & Graphical Representations</b>
+    </div>
+
+    <div style="padding-left:14px;margin-bottom:12px;">
+        <b>➜ Frequency Distribution Tables</b> – display the frequency of occurrence of different values or ranges within a dataset
+    </div>
+
+    <div style="padding-left:14px;margin-bottom:12px;">
+        <b>➜ Histograms</b> – bar charts that show the frequency distribution of numerical data; useful for visualizing the shape, central tendency, and spread of the data
+    </div>
+
+    <div style="padding-left:14px;margin-bottom:12px;">
+        <b>➜ Bar Charts</b> – used for categorical data to show the frequency or proportion of different categories
+    </div>
+
+    <div style="padding-left:14px;margin-bottom:12px;">
+        <b>➜ Pie Charts</b> – used to represent parts of a whole for categorical data
+    </div>
+
+    <div style="padding-left:14px;margin-bottom:12px;">
+        <b>➜ Scatter Plots</b> – used to visualize the relationship between two numerical variables
+    </div>
+
+    <div style="padding-left:14px;margin-bottom:12px;">
+        <b>➜ Line Graphs</b> – ideal for displaying trends over time
+    </div>
+
+    <div style="padding-left:14px;margin-bottom:8px;">
+        <b>➜ Box Plots (Box-and-Whisker Plots)</b> – display the median, quartiles, and potential outliers, providing a concise summary of the data's distribution
+    </div>
+
+</div>
+`
+},
+{
+    type: "note",
+    category: "NOTES",
+    subCategory: "MEASURES OF CENTRAL TENDENCY",
+    question: "Measures of Central Tendency",
+    notes: `
+<div style="font-family:Arial,sans-serif;color:#111;background:#f9faff;border:4px dashed #193eae;padding:12px;box-sizing:border-box;width:100%;font-size:15px;line-height:1.55;overflow-wrap:anywhere;">
+
+    <div style="margin-bottom:12px;">
+        <b style="color:#193eae;font-size:16px;">Measures of Central Tendency</b> – summary of measure that attempts to describe a whole set of data with a single value that represent the middle or center of its distribution[span_1](start_span)[span_1](end_span)
+    </div>
+
+    <div style="padding-left:14px;margin-bottom:8px;">
+        <b>➜ Mean</b> – most stable and useful measure of central tendency[span_2](start_span)[span_2](end_span)
+    </div>
+
+    <div style="border:2px solid #222;padding:10px;margin:0 0 12px 14px;box-sizing:border-box;text-align:center;width:fit-content;">
+        <div style="font-size:15px;margin-bottom:4px;">
+            <b>Formula:</b>
+        </div>
+        <div style="font-size:16px;margin-top:6px;">
+            <i>x̄</i> = 
+            <span style="display:inline-block;vertical-align:middle;text-align:center;margin-left:6px;">
+                <span style="border-bottom:1px solid #111;display:block;padding-bottom:2px;">sum of the items</span>
+                <span style="display:block;padding-top:2px;">number of items</span>
+            </span>
+        </div>
+    </div>
+
+    <div style="padding-left:32px;margin-bottom:12px;">
+        ◆ Use for interval and ratio data (normal distribution)[span_3](start_span)[span_3](end_span)
+    </div>
+
+    <div style="padding-left:14px;margin-bottom:12px;">
+        <b>➜ Median</b> – the middle score in the distribution, ordinal, and useful for skewed distribution[span_4](start_span)[span_4](end_span)
+    </div>
+
+    <div style="padding-left:14px;margin-bottom:8px;">
+        <b>➜ Mode</b> – the most frequently occurring score in a distribution of scores[span_5](start_span)[span_5](end_span)
+    </div>
+
+    <div style="padding-left:32px;margin-bottom:16px;">
+        ◆ Nominal data[span_6](start_span)[span_6](end_span)
+    </div>
+
+    <div style="margin-bottom:8px;">
+        <b style="color:#193eae;font-size:15px;">Types of Data & Measured Use:</b>
+    </div>
+
+    <div style="border:2px solid #222;padding:10px;margin:0 0 16px;box-sizing:border-box;">
+        <table style="width:100%;border-collapse:collapse;font-size:15px;">
+            <thead>
+                <tr style="border-bottom:2px solid #222;">
+                    <th style="text-align:left;padding:6px;border-right:1px solid #222;">Types of Data</th>
+                    <th style="text-align:left;padding:6px;">Measured Use</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="border-bottom:1px solid #ccc;">
+                    <td style="padding:6px;border-right:1px solid #222;">Nominal[span_7](start_span)[span_7](end_span)</td>
+                    <td style="padding:6px;">Mode[span_8](start_span)[span_8](end_span)</td>
+                </tr>
+                <tr style="border-bottom:1px solid #ccc;">
+                    <td style="padding:6px;border-right:1px solid #222;">Ordinal[span_9](start_span)[span_9](end_span)</td>
+                    <td style="padding:6px;">Median[span_10](start_span)[span_10](end_span)</td>
+                </tr>
+                <tr style="border-bottom:1px solid #ccc;">
+                    <td style="padding:6px;border-right:1px solid #222;">Interval/Ratio (skewed)[span_11](start_span)[span_11](end_span)</td>
+                    <td style="padding:6px;">Median[span_12](start_span)[span_12](end_span)</td>
+                </tr>
+                <tr>
+                    <td style="padding:6px;border-right:1px solid #222;">Interval/Ratio[span_13](start_span)[span_13](end_span)</td>
+                    <td style="padding:6px;">Mean[span_14](start_span)[span_14](end_span)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+`
+},
+{
+    type: "note",
+    category: "NOTES",
+    subCategory: "SEMI-INTERQUARTILE RANGE (SIQR)",
+    question: "Semi-Interquartile Range (SIQR)",
+    notes: `
+<div style="font-family:Arial,sans-serif;color:#111;background:#f9faff;border:4px dashed #193eae;padding:14px;box-sizing:border-box;width:100%;font-size:15px;line-height:1.6;overflow-wrap:anywhere;">
+
+    <div style="margin-bottom:14px;">
+        <b style="color:#193eae;font-size:16px;">Semi-Interquartile Range (SIQR)</b>
+    </div>
+
+    <!-- Formula Box -->
+    <div style="border:2px solid #222;padding:12px;margin:0 0 14px 0;box-sizing:border-box;text-align:center;background:#fff;border-radius:6px;">
+        <div style="font-size:14px;margin-bottom:4px;color:#555;">
+            <b>Formula:</b>
+        </div>
+        <div style="font-size:16px;margin-top:4px;">
+            <i>SIQR</i> = 
+            <span style="display:inline-block;vertical-align:middle;text-align:center;margin-left:6px;">
+                <span style="border-bottom:1px solid #111;display:block;padding-bottom:2px;"><i>Q</i><sub>3</sub> − <i>Q</i><sub>1</sub></span>
+                <span style="display:block;padding-top:2px;">2</span>
+            </span>
+        </div>
+    </div>
+
+    <!-- Bell Curve Diagram -->
+    <div style="text-align:center;margin:14px 0;background:#ffffff;padding:10px;border-radius:6px;border:1px solid #d0d7de;box-sizing:border-box;">
+        <svg viewBox="0 0 500 240" style="width:100%;max-width:100%;height:auto;display:block;margin:0 auto;">
+            <!-- Bell Curve Fills -->
+            <path d="M 30,200 Q 150,200 170,128 L 170,200 L 30,200 Z" fill="#b2f2e8" />
+            <path d="M 170,128 Q 190,56 250,28 L 250,200 L 170,200 Z" fill="#80e5d4" />
+            <path d="M 250,28 Q 310,56 330,128 L 330,200 L 250,200 Z" fill="#3acab2" />
+            <path d="M 330,128 Q 350,200 470,200 L 330,200 Z" fill="#0db197" />
+
+            <!-- Bell Curve Outline -->
+            <path d="M 30,200 Q 150,200 190,56 Q 250,-10 310,56 Q 350,200 470,200" fill="none" stroke="#2c5364" stroke-width="2" />
+
+            <!-- Vertical Quartile Lines -->
+            <line x1="170" y1="50" x2="170" y2="200" stroke="#777" stroke-width="1" stroke-dasharray="3,3" />
+            <line x1="250" y1="20" x2="250" y2="200" stroke="#777" stroke-width="1" stroke-dasharray="3,3" />
+            <line x1="330" y1="50" x2="330" y2="200" stroke="#777" stroke-width="1" stroke-dasharray="3,3" />
+
+            <!-- Labels for Q1, Q2, Q3 -->
+            <text x="170" y="40" text-anchor="middle" font-size="13" font-weight="bold" fill="#193eae">Q1</text>
+            <text x="250" y="12" text-anchor="middle" font-size="13" font-weight="bold" fill="#193eae">Q2</text>
+            <text x="330" y="40" text-anchor="middle" font-size="13" font-weight="bold" fill="#193eae">Q3</text>
+
+            <!-- Percentages -->
+            <text x="120" y="185" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">25%</text>
+            <text x="210" y="185" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">25%</text>
+            <text x="290" y="185" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">25%</text>
+            <text x="380" y="185" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">25%</text>
+
+            <!-- Axes -->
+            <line x1="20" y1="200" x2="480" y2="200" stroke="#111" stroke-width="1.5" />
+            <line x1="40" y1="20" x2="40" y2="205" stroke="#111" stroke-width="1.5" />
+
+            <!-- X-Axis Labels -->
+            <text x="90" y="218" text-anchor="middle" font-size="11" fill="#333">-4</text>
+            <text x="170" y="218" text-anchor="middle" font-size="11" fill="#333">-2</text>
+            <text x="250" y="218" text-anchor="middle" font-size="11" fill="#333">0</text>
+            <text x="330" y="218" text-anchor="middle" font-size="11" fill="#333">2</text>
+            <text x="410" y="218" text-anchor="middle" font-size="11" fill="#333">4</text>
+            <text x="250" y="235" text-anchor="middle" font-size="12" font-style="italic" fill="#111">X</text>
+
+            <!-- Y-Axis Labels -->
+            <text x="32" y="200" text-anchor="end" font-size="10" fill="#333">0.0</text>
+            <text x="32" y="155" text-anchor="end" font-size="10" fill="#333">0.1</text>
+            <text x="32" y="110" text-anchor="end" font-size="10" fill="#333">0.2</text>
+            <text x="32" y="65" text-anchor="end" font-size="10" fill="#333">0.3</text>
+            <text x="32" y="25" text-anchor="end" font-size="10" fill="#333">0.4</text>
+        </svg>
+    </div>
+
+    <div style="margin:12px 0 6px 0;">
+        <b>➜ Explanation:</b>
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:8px;">
+        ◆ The Semi-Interquartile Range is half of the distance between the first quartile (<i>Q</i><sub>1</sub>) and the third quartile (<i>Q</i><sub>3</sub>) in a distribution.
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:8px;">
+        ◆ Based on the normal distribution curve, the area under the curve is divided into four equal parts of 25% each between the key quartile points (<i>Q</i><sub>1</sub>, <i>Q</i><sub>2</sub>, and <i>Q</i><sub>3</sub>).
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:4px;">
+        ◆ It serves as a useful measure of dispersion or spread, especially for skewed distributions or ordinal data where extremes might otherwise skew the interpretation.
+    </div>
+
+</div>
+`
+},
+{
+  type: "quiz",
+  category: "06 - RESEARCH METHODS AND STATISTICS",
+  subCategory: "MEASURES OF CENTRAL TENDENCY",
+  question: "A psychologist wants to summarize the overall performance of five students on an intelligence test by adding all of their test scores together and dividing the sum by five. What measure of central tendency is the psychologist calculating?",
+  choices: [
+        "Mean",
+        "Median",
+        "Mode",
+        "Standard Deviation"
+  ],
+  correctAnswer: "Mean",
+  notes: `<b>MEAN</b><br><br><b>Definition:</b><br><br>The mean is a measure of central tendency that represents the average of a set of scores.<br><br><b>Explanation:</b><br><br>To find the mean, add all the scores together and divide the total by the number of scores.<br><br><b>Formula:</b><br>$$\\text{Mean} = \\frac{\\text{Sum of all scores}}{\\text{Number of scores}}$$ <br><b>Example:</b><br><br>A group of students gets these test scores: 70, 80, 90.<br><ul><li><b>Sum of scores:</b> $70 + 80 + 90 = 240$</li><li><b>Number of scores:</b> $3$</li><li><b>Mean:</b> $240 \\div 3 = 80$</li></ul><b>What to Remember for CFE:</b><br><ul><li>The mean represents the average score.</li><li>It uses all the scores in the data set.</li><li>It is affected by extremely high or low scores (outliers).</li><li>It is commonly used for interval and ratio data.</li><li>In a normal distribution, $\\text{mean} = \\text{median} = \\text{mode}$.</li></ul><b>Situational Application:</b><br><br><b>Situation:</b> A psychologist calculates the average score of five students on an intelligence test to summarize their overall performance.<br><br><b>Answer:</b> Mean<br><br><b>Why?</b> The calculated value is the arithmetic average obtained by summing all scores and dividing by the sample size.<br><br><b>CFE Tip: How to Recognize It:</b><br><br>Look for questions involving the average, adding all scores, and dividing by the total number of scores.<br><br><b>Memory Trick:</b><br><br><b>Mean = Add and Divide.</b>`
+},
+{
+  type: "quiz",
+  category: "06 - RESEARCH METHODS AND STATISTICS",
+  subCategory: "MEASURES OF CENTRAL TENDENCY",
+  question: "A psychologist records the stress ratings of students and arranges them from lowest to highest, identifying the exact middle value that divides the distribution into two equal halves. What measure of central tendency is being used?",
+  choices: [
+        "Mean",
+        "Mode",
+        "Median",
+        "Standard Deviation"
+  ],
+  correctAnswer: "Median",
+  notes: `<b>MEDIAN</b><br><br><b>Definition:</b><br><br>The median is a measure of central tendency that represents the middle value in a set of scores arranged from lowest to highest.<br><br><b>Explanation:</b><br><br>To find the median, arrange all scores in order and identify the middle value.<br><ul><li><b>Odd number of scores:</b> The median is the single middle value.</li><li><b>Even number of scores:</b> The median is the average of the two middle values.</li></ul><b>Example:</b><br><br>Scores: 60, 70, 80, 90, 100<br>The middle value is 80, so the median is 80.<br><br>For an even number of scores:<br>Scores: 60, 70, 80, 90<br>The two middle values are 70 and 80.<br>$$\\text{Median} = \\frac{70 + 80}{2} = 75$$<br><b>What to Remember for CFE:</b><br><ul><li>The median is the middle value after arranging scores in order.</li><li>It can be used for ordinal, interval, and ratio data.</li><li>It is less affected by extremely high or low scores (outliers) than the mean.</li><li>In a normal distribution, $\\text{mean} = \\text{median} = \\text{mode}$.</li></ul><b>Situational Application:</b><br><br><b>Situation:</b> A psychologist records the stress ratings of students and arranges them from lowest to highest. The middle rating represents the median stress rating.<br><br><b>Answer:</b> Median<br><br><b>Why?</b> It identifies the exact midpoint of a distribution where half the scores fall above and half fall below, remaining resistant to extreme outliers.<br><br><b>CFE Tip: How to Recognize It:</b><br><br>Look for terms such as middle value, scores arranged in order, or the value that divides the data into two halves.<br><br><b>Memory Trick:</b><br><br><b>Median = Middle.</b>`
+},
+{
+  type: "quiz",
+  category: "06 - RESEARCH METHODS AND STATISTICS",
+  subCategory: "MEASURES OF CENTRAL TENDENCY",
+  question: "A psychologist analyzes the frequency of different test scores in a dataset and identifies the score that appears most frequently. What measure of central tendency is being used?",
+  choices: [
+        "Mean",
+        "Median",
+        "Mode",
+        "Range"
+  ],
+  correctAnswer: "Mode",
+  notes: `<b>MODE</b><br><br><b>Definition:</b><br><br>The mode is a measure of central tendency that represents the most frequently occurring score or category in a data set.<br><br><b>Explanation:</b><br><br>The mode simply looks at which value shows up the most times. A distribution can have one mode (unimodal), two modes (bimodal), or more than two modes (multimodal).<br><br><b>Example:</b><br><br>A group of students receives these test scores: 70, 80, 80, 90, 100.<br>The score that appears most frequently is 80, so the mode is 80.<br><br><b>What to Remember for CFE:</b><br><ul><li>The mode represents the most frequent value or category.</li><li>It is the only measure of central tendency that can be used with nominal (categorical) data.</li><li>A distribution can have no mode, one mode, or multiple modes.</li><li>It is not affected by extreme outliers.</li></ul><b>Situational Application:</b><br><br><b>Situation:</b> A researcher records the preferred counseling modality (individual, group, or family) chosen by clients and determines which modality is selected most often.<br><br><b>Answer:</b> Mode<br><br><b>Why?</b> It identifies the most frequently occurring category or score in the dataset.<br><br><b>CFE Tip: How to Recognize It:</b><br><br>Look for clues such as \"most frequent,\" \"most common,\" \"most popular,\" or categorical data like nominal scales.<br><br><b>Memory Trick:</b><br><br><b>Mode = Most.</b> It is the score that appears the most times.`
+},
+{
+  type: "quiz",
+  category: "06 - RESEARCH METHODS AND STATISTICS",
+  subCategory: "MEASURES OF VARIABILITY",
+  question: "Two classes take the same psychometric test. Class A has scores ranging from 80 to 95, while Class B has scores from 50 to 95. What measure of variability is calculated by finding the difference between the highest and lowest scores in a distribution?",
+  choices: [
+        "Variance",
+        "Standard Deviation",
+        "Range",
+        "Interquartile Range"
+  ],
+  correctAnswer: "Range",
+  notes: `<b>RANGE</b><br><br><b>Definition:</b><br><br>Range is a measure of variability that shows the difference between the highest and lowest scores in a set of data.<br><br><b>Explanation:</b><br><br>Range tells us how spread out the scores are by looking at the two extreme values. A larger range means the scores cover a wider span, while a smaller range means they cover a narrower span.<br><br><b>Formula:</b><br>$$\\text{Range} = \\text{Highest Score} - \\text{Lowest Score}$$<br><b>Example:</b><br><br>A group of students gets these test scores: 60, 70, 75, 80, 90.<br><ul><li><b>Highest score:</b> 90</li><li><b>Lowest score:</b> 60</li><li><b>Range:</b> $90 - 60 = 30$</li></ul><b>What to Remember for CFE:</b><br><ul><li>Range is a measure of variability.</li><li>It uses only the highest and lowest scores.</li><li>It does not show how the scores are distributed between those two values.</li><li>A very high or low score (outlier) can greatly affect the range.</li></ul><b>Situational Application:</b><br><br><b>Situation:</b> Two classes take the same test. Class A has scores ranging from 80 to 95, while Class B has scores ranging from 50 to 95.<br><br><b>Answer:</b> Range<br><br><b>Why?</b> Class B has a larger range because the numerical difference between its highest score (95) and lowest score (50) is greater than Class A's.<br><br><b>CFE Tip: How to Recognize It:</b><br><br>Look for questions asking about the difference between the highest and lowest scores in a distribution.<br><br><b>Memory Trick:</b><br><br><b>Range = Highest − Lowest.</b>`
+},
+{
+  type: "quiz",
+  category: "06 - RESEARCH METHODS AND STATISTICS",
+  subCategory: "MEASURES OF VARIABILITY",
+  question: "A psychologist compares the test scores of two groups and evaluates the dispersion of the middle 50% of the dataset by subtracting the first quartile ($Q_1$) from the third quartile ($Q_3$). What measure of variability is being used?",
+  choices: [
+        "Range",
+        "Standard Deviation",
+        "Variance",
+        "Interquartile Range"
+  ],
+  correctAnswer: "Interquartile Range",
+  notes: `<b>INTERQUARTILE RANGE (IQR)</b><br><br><b>Definition:</b><br><br>The interquartile range (IQR) is a measure of variability that shows the spread of the middle 50% of scores in a data set.<br><br><b>Explanation:</b><br><br>The IQR is calculated by subtracting the first quartile (Q1) from the third quartile (Q3).<br><ul><li><b>Q1 (First Quartile):</b> The value below which approximately 25% of the scores fall.</li><li><b>Q3 (Third Quartile):</b> The value below which approximately 75% of the scores fall.</li></ul><b>Formula:</b><br>$$\\text{IQR} = Q_3 - Q_1$$<br><b>Example:</b><br><br>Suppose the first quartile (Q1) of a set of test scores is 60, and the third quartile (Q3) is 85.<br><ul><li><b>Q1:</b> 60</li><li><b>Q3:</b> 85</li><li><b>IQR:</b> $85 - 60 = 25$</li></ul>This means the middle 50% of scores span 25 points.<br><br><b>What to Remember for CFE:</b><br><ul><li>IQR measures the spread of the middle 50% of scores.</li><li>It is calculated using Q1 and Q3.</li><li>It is less affected by extremely high or low scores (outliers) than the range.</li><li>A larger IQR means the middle 50% of scores are more spread out.</li></ul><b>Situational Application:</b><br><br><b>Situation:</b> A psychologist compares the test scores of two groups. Group A has an IQR of 10, while Group B has an IQR of 25. Group B's middle 50% of scores are more spread out.<br><br><b>Answer:</b> Interquartile Range<br><br><b>Why?</b> It specifically targets the middle 50% of the distribution, providing a robust measure of variability that is unaffected by extreme outliers.<br><br><b>CFE Tip: How to Recognize It:</b><br><br>Look for phrases such as middle 50%, Q3 minus Q1, or spread between the first and third quartiles.<br><br><b>Memory Trick:</b><br><br><b>IQR = Q3 − Q1 = Middle 50%.</b>`
+},
+{
+  type: "quiz",
+  category: "06 - RESEARCH METHODS AND STATISTICS",
+  subCategory: "MEASURES OF VARIABILITY",
+  question: "A psychologist analyzes a distribution of test scores where the first quartile ($Q_1$) is 50 and the third quartile ($Q_3$) is 70, and calculates a measure of variability that represents exactly half of the difference between these two quartiles. What measure of variability is being used?",
+  choices: [
+        "Interquartile Range",
+        "Semi-Interquartile Range",
+        "Standard Deviation",
+        "Range"
+  ],
+  correctAnswer: "Semi-Interquartile Range",
+  notes: `<b>SEMI-INTERQUARTILE RANGE</b><br><br><b>Definition:</b><br><br>The semi-interquartile range is a measure of variability that represents half of the interquartile range (IQR).<br><br><b>Explanation:</b><br><br>It measures the spread of the middle 50% of scores by taking half the difference between the third quartile ($Q_3$) and the first quartile ($Q_1$).<br><ul><li><b>Q1 (First Quartile):</b> The value marking approximately the 25th percentile.</li><li><b>Q3 (Third Quartile):</b> The value marking approximately the 75th percentile.</li></ul><b>Formula:</b><br>$$\\text{Semi-Interquartile Range} = \\frac{Q_3 - Q_1}{2}$$<br><b>Example:</b><br><br>Suppose $Q_1 = 60$ and $Q_3 = 80$.<br><ul><li>$\\text{IQR} = 80 - 60 = 20$</li><li>$\\text{Semi-interquartile range} = 20 \\div 2 = 10$</li></ul><b>What to Remember for CFE:</b><br><ul><li>It is also called the quartile deviation.</li><li>It is half of the IQR.</li><li>It describes the spread of the middle 50% of scores.</li><li>It is less affected by extreme scores than the full range.</li></ul><b>Situational Application:</b><br><br><b>Situation:</b> A psychologist finds that Q1 of a set of test scores is 50 and Q3 is 70, and calculates $(70 - 50) \\div 2 = 10$.<br><br><b>Answer:</b> Semi-Interquartile Range<br><br><b>Why?</b> It specifically takes half of the interquartile range (quartile deviation) to assess variability for skewed or ordinal data while avoiding the impact of extreme outliers.<br><br><b>CFE Tip: How to Recognize It:</b><br><br>Look for phrases such as half of the interquartile range, quartile deviation, or a formula that divides the difference between Q3 and Q1 by 2.<br><br><b>Memory Trick:</b><br><br><b>Semi = Half; Semi-IQR = IQR ÷ 2.</b>`
+},
+{
+  type: "quiz",
+  category: "06 - RESEARCH METHODS AND STATISTICS",
+  subCategory: "MEASURES OF VARIABILITY",
+  question: "A researcher is analyzing two groups of student test scores that share the exact same mean score of 80. Group A's scores are tightly clustered around the mean, whereas Group B's scores are widely spread out. What measure of variability describes the average distance or spread of scores from the mean?",
+  choices: [
+        "Variance",
+        "Interquartile Range",
+        "Range",
+        "Standard Deviation"
+  ],
+  correctAnswer: "Standard Deviation",
+  notes: `<b>STANDARD DEVIATION</b><br><br><b>Definition:</b><br><br>Standard deviation is a measure of variability that tells us how spread out scores are from the mean (average).<br><br><b>Explanation:</b><br><ul><li><b>Low standard deviation:</b> Scores are close to the mean.</li><li><b>High standard deviation:</b> Scores are more spread out from the mean.</li><li><b>Zero standard deviation:</b> All scores are the same.</li></ul><b>Example:</b><br><br>Two groups have the same mean score of 80.<br><ul><li><b>Group A:</b> 78, 80, 82 — scores are close together, so the standard deviation is low.</li><li><b>Group B:</b> 60, 80, 100 — scores are more spread out, so the standard deviation is high.</li></ul>Both groups have the same mean, but their standard deviations differ because their scores are spread out differently.<br><br><b>What to Remember for CFE:</b><br><ul><li>Standard deviation measures how far scores tend to spread from the mean.</li><li>A higher standard deviation means greater variability.</li><li>A lower standard deviation means less variability.</li><li>In a normal distribution, approximately $68\\%$ of scores fall within $\\pm 1$ standard deviation of the mean, and approximately $95\\%$ fall within $\\pm 2$ standard deviations.</li></ul><b>Situational Application:</b><br><br><b>Situation:</b> If students' test scores are very similar, the standard deviation is low. If their scores vary greatly, the standard deviation is high.<br><br><b>Answer:</b> Standard Deviation<br><br><b>Why?</b> It calculates the dispersion or spread of individual scores relative to the arithmetic mean of the dataset.<br><br><b>CFE Tip: How to Recognize It:</b><br><br>If the question asks about the spread of scores around the mean, the answer is Standard Deviation.<br><br><b>Memory Trick:</b><br><br><b>Standard Deviation = Spread from the Mean.</b>`
+},
+{
+  type: "quiz",
+  category: "07 - SELECTION OF ASSESSMENT METHODS AND TOOLS",
+  subCategory: "INTELLIGENCE TESTS AND DEVELOPMENTAL",
+  question: "A researcher investigates the historical view that individuals possessing superior sensory abilities, such as keen vision and sharp hearing, also tend to exhibit higher general intelligence. Which historical figure is primarily associated with this perspective?",
+  choices: [
+        "Alfred Binet",
+        "Francis Galton",
+        "David Wechsler",
+        "Charles Spearman"
+  ],
+  correctAnswer: "Francis Galton",
+  notes: `<b>FRANCIS GALTON</b><br><br><b>Definition:</b><br><br>Francis Galton was a pioneer in the study of individual differences who believed that intelligence was related to a person's sensory abilities, such as vision and hearing.<br><br><b>Explanation:</b><br><br>Galton believed that people with better sensory abilities might also have higher intelligence. He used sensory tests, such as tests of visual and hearing ability, as ways to study intelligence.<br><br><b>Example:</b><br><br>A person is given a test to measure how well they can see or hear. Galton believed that these sensory abilities could provide information about the person's intelligence.<br><br><b>What to Remember for CFE:</b><br><ul><li>Francis Galton = Sensory abilities and intelligence.</li><li>He focused on individual differences.</li><li>He believed that better sensory abilities were associated with greater intelligence.</li></ul><b>Situational Application:</b><br><br><b>Situation:</b> A psychologist studies whether people with better visual and hearing abilities also show higher intelligence. This idea is associated with Francis Galton.<br><br><b>Answer:</b> Francis Galton<br><br><b>Why?</b> He was a pioneer in psychometrics who hypothesized that intelligence could be gauged by measuring basic sensory and motor functions.<br><br><b>CFE Tip: How to Recognize It:</b><br><br>If the question mentions sensory abilities, visual acuity, hearing ability, or individual differences, think of Francis Galton.<br><br><b>Memory Trick:</b><br><br><b>Galton = Good senses.</b>`
+},
+{
+  type: "quiz",
+  category: "07 - SELECTION OF ASSESSMENT METHODS AND TOOLS",
+  subCategory: "INTELLIGENCE TESTS AND DEVELOPMENTAL",
+  question: "A psychologist assesses a client's cognitive functions and notes that problem-solving relies on an integrated combination of judgment, reasoning, memory, and abstraction working together. Whose view of intelligence is best reflected in this description?",
+  choices: [
+        "Francis Galton",
+        "Charles Spearman",
+        "David Wechsler",
+        "Alfred Binet"
+  ],
+  correctAnswer: "Alfred Binet",
+  notes: `<b>ALFRED BINET</b><br><br><b>Definition:</b><br><br>Alfred Binet was a psychologist who viewed intelligence as a combination of mental abilities, including judgment, reasoning, memory, and abstraction.<br><br><b>Explanation:</b><br><br>Binet believed that when a person solves a problem, different mental abilities work together. These abilities cannot be completely separated because they interact to help the person find a solution.<br><br><b>Example:</b><br><br>A student solves a difficult problem by remembering information, using logical reasoning, and making a judgment. These mental abilities work together, which reflects Binet’s view of intelligence.<br><br><b>What to Remember for CFE:</b><br><ul><li>Alfred Binet = Mental abilities working together.</li><li>Important abilities include judgment, reasoning, memory, and abstraction.</li><li>He is associated with the development of intelligence testing.</li></ul><b>Situational Application:</b><br><br><b>Situation:</b> A question describes a person using memory, reasoning, and judgment together to solve a problem. This reflects Alfred Binet’s view of intelligence.<br><br><b>Answer:</b> Alfred Binet<br><br><b>Why?</b> He conceptualized intelligence not as single sensory faculties, but as a complex blend of higher-order cognitive processes like judgment, reasoning, and comprehension.<br><br><b>CFE Tip: How to Recognize It:</b><br><br>If the question mentions judgment, reasoning, memory, and abstraction working together, think of Alfred Binet.<br><br><b>Memory Trick:</b><br><br><b>Binet = Brain abilities blend together.</b>`
+},
+{
+  type: "quiz",
+  category: "07 - SELECTION OF ASSESSMENT METHODS AND TOOLS",
+  subCategory: "INTELLIGENCE TESTS AND DEVELOPMENTAL",
+  question: "A psychologist defines intelligence as an individual's overall capacity to act purposefully, think rationally, and deal effectively with their environment. Whose theoretical definition of intelligence is this?",
+  choices: [
+        "Alfred Binet",
+        "Francis Galton",
+        "David Wechsler",
+        "Charles Spearman"
+  ],
+  correctAnswer: "David Wechsler",
+  notes: `<b>DAVID WECHSLER</b><br><br><b>Definition:</b><br><br>David Wechsler was a psychologist who defined intelligence as a person's overall ability to act purposefully, think rationally, and deal effectively with their environment.<br><br><b>Explanation:</b><br><br>Wechsler viewed intelligence as a person's general ability to think, make decisions, solve problems, and handle everyday situations. Intelligence is not just about answering questions correctly; it also involves using mental abilities to function effectively in real life.<br><br><b>Example:</b><br><br>A student uses logical thinking to solve a problem, makes a plan to finish schoolwork, and adjusts when the situation changes. These abilities reflect Wechsler's view of intelligence.<br><br><b>What to Remember for CFE:</b><br><ul><li>David Wechsler = Overall or global capacity.</li><li>Intelligence includes purposeful behavior, rational thinking, and effective adjustment to the environment.</li><li>He developed well-known intelligence tests, including the Wechsler intelligence scales.</li></ul><b>Situational Application:</b><br><br><b>Situation:</b> A question describes intelligence as the ability to think rationally, act purposefully, and deal effectively with everyday situations.<br><br><b>Answer:</b> David Wechsler<br><br><b>Why?</b> He emphasized a global, functional view of intelligence focused on adaptive, goal-directed behavior rather than isolated academic tasks.<br><br><b>CFE Tip: How to Recognize It:</b><br><br>Look for the phrases “act purposefully,” “think rationally,” and “deal effectively with the environment.”<br><br><b>Memory Trick:</b><br><br><b>Wechsler = Wise thinking and effective living.</b>`
+},
+{
+    type: "note",
+    category: "NOTES",
+    subCategory: "LATEST STANFORD-BINET INTELLIGENCE TEST (SB-5) [ C]",
+    question: "Latest Stanford-Binet Intelligence Test (SB-5)",
+    notes: `
+<div style="font-family:Arial,sans-serif;color:#111;background:#f9faff;border:4px dashed #193eae;padding:14px;box-sizing:border-box;width:100%;font-size:15px;line-height:1.6;overflow-wrap:anywhere;">
+
+    <div style="margin-bottom:14px;">
+        <b style="color:#193eae;font-size:16px;">Latest Stanford-Binet Intelligence Test (SB-5)</b>[span_0](start_span)[span_0](end_span)
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:8px;">
+        ◆ <b>Purpose:</b> Designed for the testing of cognitive abilities[span_1](start_span)[span_1](end_span).
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:8px;">
+        ◆ <b>Population:</b> 2 to 85+ years[span_2](start_span)[span_2](end_span).
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:8px;">
+        ◆ <b>Score:</b> Verbal, Performance, and Full Scale Scores[span_3](start_span)[span_3](end_span).
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:8px;">
+        ◆ <b>Time:</b> Approximately 5 minutes for 10 subtests, varies depending on age and functional level of examinee (most items are unlimited, adding to overall time for administration)[span_4](start_span)[span_4](end_span).
+    </div>
+
+    <div style="padding-left:32px;margin-bottom:6px;">
+        • Full Scale IQ: 45–75 minutes[span_5](start_span)[span_5](end_span)
+    </div>
+    <div style="padding-left:32px;margin-bottom:6px;">
+        • V & NV Scales: 30 minutes each[span_6](start_span)[span_6](end_span)
+    </div>
+    <div style="padding-left:32px;margin-bottom:6px;">
+        • Abbreviated Battery IQ: (2 routing subtests): 15–20 minutes[span_7](start_span)[span_7](end_span)
+    </div>
+    <div style="padding-left:32px;margin-bottom:12px;">
+        • Individual Scales: 15–75 minutes[span_8](start_span)[span_8](end_span)
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:8px;">
+        ◆ <b>Domains Measured:</b>[span_9](start_span)[span_9](end_span)
+    </div>
+
+    <div style="padding-left:32px;margin-bottom:6px;">
+        • <b>(FR) Fluid Reasoning</b> – the ability to solve verbal and nonverbal problems using inductive and deductive reasoning[span_10](start_span)[span_10](end_span).
+    </div>
+    <div style="padding-left:32px;margin-bottom:6px;">
+        • <b>(K) Knowledge</b> – a person's accumulated fund of general information acquired at home, school, or work[span_11](start_span)[span_11](end_span).
+    </div>
+    <div style="padding-left:32px;margin-bottom:6px;">
+        • <b>(QR) Quantitative Reasoning</b> – an individual's facility with numbers and numerical problem-solving, whether with word problem[span_12](start_span)[span_12](end_span).
+    </div>
+    <div style="padding-left:32px;margin-bottom:6px;">
+        • <b>(VsP) Visuo-Spatial Processing</b> – measures an individual's ability to see patterns, relationships, spatial orientations, or gestalt among diverse pieces of a visual display[span_13](start_span)[span_13](end_span).
+    </div>
+    <div style="padding-left:32px;margin-bottom:12px;">
+        • <b>(WM) Working Memory</b> – a class of memory processes in which diverse information stored in short-term memory is inspected, sorted, or transformed[span_14](start_span)[span_14](end_span).
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:8px;">
+        ◆ <b>Scales:</b> Full Scale IQ (10 subtests), Domain Scores (V & NV IQ), 5 Factor Indices (FR/K/QR/VsP/WM)[span_15](start_span)[span_15](end_span).
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:8px;">
+        ◆ <b>IQ Qualification:</b>[span_16](start_span)[span_16](end_span)
+    </div>
+
+    <div style="padding-left:32px;margin-bottom:4px;">• 145–160: Very gifted or highly advanced[span_17](start_span)[span_17](end_span)</div>
+    <div style="padding-left:32px;margin-bottom:4px;">• 130–144: Gifted or very advanced[span_18](start_span)[span_18](end_span)</div>
+    <div style="padding-left:32px;margin-bottom:4px;">• 120–129: Superior[span_19](start_span)[span_19](end_span)</div>
+    <div style="padding-left:32px;margin-bottom:4px;">• 110–119: High average[span_20](start_span)[span_20](end_span)</div>
+    <div style="padding-left:32px;margin-bottom:4px;">• 90–109: Average[span_21](start_span)[span_21](end_span)</div>
+    <div style="padding-left:32px;margin-bottom:4px;">• 80–89: Low average[span_22](start_span)[span_22](end_span)</div>
+    <div style="padding-left:32px;margin-bottom:4px;">• 70–79: Borderline impaired or delayed[span_23](start_span)[span_23](end_span)</div>
+    <div style="padding-left:32px;margin-bottom:4px;">• 55–69: Mildly impaired or delayed[span_24](start_span)[span_24](end_span)</div>
+    <div style="padding-left:32px;margin-bottom:4px;">• 40–54: Moderately impaired or delayed[span_25](start_span)[span_25](end_span)</div>
+
+</div>
+`
+},
+{
+    type: "note",
+    category: "NOTES",
+    subCategory: "LATEST STANFORD-BINET INTELLIGENCE TEST (SB-5) [ C]",
+    question: "Background & Earlier Versions of SB-5",
+    notes: `
+<div style="font-family:Arial,sans-serif;color:#111;background:#f9faff;border:4px dashed #193eae;padding:14px;box-sizing:border-box;width:100%;font-size:15px;line-height:1.6;overflow-wrap:anywhere;">
+
+    <div style="margin-bottom:14px;">
+        <b style="color:#193eae;font-size:16px;">Background & Earlier Versions of SB-5</b>[span_26](start_span)[span_26](end_span)
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:8px;">
+        ➜ First published intelligence test to provide organized and detailed administration and scoring instructions[span_27](start_span)[span_27](end_span).
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:8px;">
+        ➜ <b>Lewis Terman (1877–1956)</b> – translated in English the Binet-Simon test at Stanford University, and the first American test to employ the concept of IQ[span_28](start_span)[span_28](end_span).
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:8px;">
+        ➜ <b>Alternate Item</b> – an item to be substituted for a regular item under specified conditions[span_29](start_span)[span_29](end_span).
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:8px;">
+        ➜ <b>Maud Merrill (1888–1978)</b> – development of two equivalent forms innovated in 1937, labeled L (Lewis) and M (Maud), as well as new types of tasks for use with preschool-level and adult-level test takers[span_30](start_span)[span_30](end_span).
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:8px;">
+        ➜ <b>Mental Age</b> – the age levels at which an individual aspect to be functioning intellectually as indicated by the level of items responded to correctly[span_31](start_span)[span_31](end_span).
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:8px;">
+        ➜ <b>Ratio IQ</b> – the ratio of the test taker's mental age divided by chronological age, multiplied by 100[span_32](start_span)[span_32](end_span).
+    </div>
+
+    <!-- Formula Box -->
+    <div style="border:2px solid #222;padding:10px;margin:8px 0 14px 16px;box-sizing:border-box;text-align:center;background:#fff;border-radius:6px;width:fit-content;">
+        <div style="font-size:14px;margin-bottom:4px;color:#555;">
+            <b>Formula:</b>
+        </div>
+        <div style="font-size:16px;margin-top:4px;">
+            <i>ratio IQ</i> = 
+            <span style="display:inline-block;vertical-align:middle;text-align:center;margin-left:6px;">
+                <span style="border-bottom:1px solid #111;display:block;padding-bottom:2px;">mental age</span>
+                <span style="display:block;padding-top:2px;">chronological age</span>
+            </span>
+            × 100
+        </div>
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:8px;">
+        ➜ <b>SB-III</b> – deviation IQ was used in place of ratio IQ[span_33](start_span)[span_33](end_span).
+    </div>
+
+    <div style="padding-left:32px;margin-bottom:12px;">
+        ◆ <b>Deviation IQ</b> – reflects a comparison of the performance of the individual with the performance of others of the same age in the standardization sample[span_34](start_span)[span_34](end_span)[span_35](start_span)[span_35](end_span).
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:8px;">
+        ➜ <b>SB:FE (4th ed.)</b>[span_36](start_span)[span_36](end_span)
+    </div>
+
+    <div style="padding-left:32px;margin-bottom:6px;">
+        ◆ <b>Point Scale</b> – a test organized into subsets by categorizing at which most test takers are presumed capable of responding in the way that is keyed as correct[span_37](start_span)[span_37](end_span).
+    </div>
+    <div style="padding-left:32px;margin-bottom:12px;">
+        ◆ <b>Test Composite</b> – a test score or index derived from the combination of, and/or a mathematical transformation of, one or more subtest scores[span_38](start_span)[span_38](end_span).
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:8px;">
+        ➜ <b>SB-5</b>[span_39](start_span)[span_39](end_span)
+    </div>
+
+    <div style="padding-left:32px;margin-bottom:6px;">
+        ◆ Based on the CHC theory of intellectual abilities[span_40](start_span)[span_40](end_span).
+    </div>
+    <div style="padding-left:32px;margin-bottom:6px;">
+        ◆ Measures 5 CHC factors by different types of tasks and subtests as different levels[span_41](start_span)[span_41](end_span).
+    </div>
+    <div style="padding-left:32px;margin-bottom:6px;">
+        ◆ <b>Routing Test</b> – a task used to direct or route the examinee to a particular level of questions[span_42](start_span)[span_42](end_span).
+    </div>
+    <div style="padding-left:32px;margin-bottom:6px;">
+        ◆ 2 routing tests of the SB5[span_43](start_span)[span_43](end_span):
+        <div style="padding-left:16px;margin-top:4px;">
+            • Object series[span_44](start_span)[span_44](end_span)<br>
+            • Matrices and vocabulary[span_45](start_span)[span_45](end_span)
+        </div>
+    </div>
+    <div style="padding-left:32px;margin-bottom:6px;">
+        ◆ <b>Teaching Items</b> – designed to illustrate the task required and assure the examiner that examinee understands[span_46](start_span)[span_46](end_span).
+    </div>
+    <div style="padding-left:32px;margin-bottom:6px;">
+        ◆ <b>Floor</b> – lowest level of the items on a subtest[span_47](start_span)[span_47](end_span).
+    </div>
+    <div style="padding-left:32px;margin-bottom:6px;">
+        ◆ <b>Ceiling</b> – highest level of the items on a subtest[span_48](start_span)[span_48](end_span).
+    </div>
+    <div style="padding-left:32px;margin-bottom:6px;">
+        ◆ <b>Basal Level</b> – a subtest with reference to a specific taker's performance[span_49](start_span)[span_49](end_span).
+    </div>
+    <div style="padding-left:32px;margin-bottom:6px;">
+        ◆ <b>Adaptive Testing</b> – testing individually tailored to the test taker at the beginning a subtest with a question on the middle range of difficulty[span_50](start_span)[span_50](end_span).
+    </div>
+
+</div>
+`
+},
+{
+  type: "note",
+  category: "NOTES",
+  subCategory: "WECHSLER ADULT INTELLIGENCE (WAIS-V) [C]",
+  question: "Wechsler Adult Intelligence Scale–Fifth Edition (WAIS-V)",
+  notes: `
+<div style="font-family:Arial,sans-serif;color:#111;background:#f9faff;padding:14px;box-sizing:border-box;width:100%;font-size:15px;line-height:1.6;overflow-wrap:anywhere;">
+
+    <div style="margin-bottom:14px;">
+        <b style="color:#193eae;font-size:16px;">Wechsler Adult Intelligence Scale–Fifth Edition (WAIS-V)</b>
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:8px;">
+        ➜ <b>Definition:</b> The WAIS-V is an individually administered intelligence test designed to assess the cognitive abilities of adults.
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:8px;">
+        ➜ <b>Explanation:</b> The WAIS-V is part of the Wechsler intelligence test series developed to measure different aspects of thinking and mental ability. It helps psychologists understand an adult's cognitive strengths and weaknesses.
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:8px;">
+        ➜ <b>Purpose:</b> To provide a comprehensive measure of an individual's intellectual functioning.
+    </div>
+
+    <div style="padding-left:32px;margin-bottom:6px;">
+        • Diagnose intellectual disabilities or learning disorders
+    </div>
+    <div style="padding-left:32px;margin-bottom:6px;">
+        • Identify intellectual giftedness
+    </div>
+    <div style="padding-left:32px;margin-bottom:6px;">
+        • Assess cognitive strengths and weaknesses
+    </div>
+    <div style="padding-left:32px;margin-bottom:12px;">
+        • Help in neuropsychological evaluations, such as for traumatic brain injury or dementia
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:8px;">
+        ➜ <b>Population:</b> 16 years 0 months to 90 years 11 months.
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:8px;">
+        ➜ <b>Score:</b>
+    </div>
+
+    <div style="padding-left:32px;margin-bottom:6px;">
+        • <b>Full-Scale IQ (FSIQ)</b> – a composite score that represents overall intellectual ability.
+    </div>
+    <div style="padding-left:32px;margin-bottom:6px;">
+        • <b>Primary Index Scores</b> – five key scores that measure cognitive abilities in distinct domains.
+    </div>
+    <div style="padding-left:32px;margin-bottom:6px;">
+        • <b>Subtest Scaled Scores</b> – individual scores for each subtest, with a mean of 10 and a standard deviation of 3.
+    </div>
+    <div style="padding-left:32px;margin-bottom:12px;">
+        • <b>Ancillary and Complementary Index Scores</b> – additional scores that provide more specific clinical insights, such as nonverbal or quantitative reasoning abilities.
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:8px;">
+        ➜ <b>Time:</b> (45 – 60) minutes.
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:8px;">
+        ➜ <b>Domains Measured:</b>
+    </div>
+
+    <div style="padding-left:32px;margin-bottom:6px;">
+        • <b>Verbal Comprehension Index (VCI)</b> – ability to use verbal reasoning and acquired knowledge.
+    </div>
+    <div style="padding-left:32px;margin-bottom:6px;">
+        • <b>Visual-Spatial Index (VSI)</b> – capacity to analyze, synthesize, and mentally manipulate visual information.
+    </div>
+    <div style="padding-left:32px;margin-bottom:6px;">
+        • <b>Fluid Reasoning Index (FRI)</b> – ability to solve novel problems and identify underlying patterns.
+    </div>
+    <div style="padding-left:32px;margin-bottom:6px;">
+        • <b>Working Memory Index (WMI)</b> – ability to hold and process information in short-term memory.
+    </div>
+    <div style="padding-left:32px;margin-bottom:12px;">
+        • <b>Processing Speed Index (PSI)</b> – quick and efficient processing of simple visual information.
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:8px;">
+        ➜ <b>Subtests:</b>
+    </div>
+
+    <div style="padding-left:32px;margin-bottom:6px;">
+        • <b>Verbal Comprehension:</b> Similarities, Vocabulary
+    </div>
+    <div style="padding-left:32px;margin-bottom:6px;">
+        • <b>Visual-Spatial:</b> Block Design, Visual Puzzles
+    </div>
+    <div style="padding-left:32px;margin-bottom:6px;">
+        • <b>Fluid Reasoning:</b> Matrix Reasoning, Figure Weights
+    </div>
+    <div style="padding-left:32px;margin-bottom:6px;">
+        • <b>Working Memory:</b> Digit Span, Picture Span
+    </div>
+    <div style="padding-left:32px;margin-bottom:12px;">
+        • <b>Processing Speed:</b> Coding, Symbol Search
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:8px;">
+        ➜ <b>Example:</b> A psychologist administers the WAIS-V to an adult to assess their intellectual abilities and identify areas of cognitive strength and difficulty.
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:8px;">
+        ➜ <b>What to Remember for CFE:</b>
+        <div style="padding-left:16px;margin-top:4px;">
+            • WAIS = Wechsler Adult Intelligence Scale.<br>
+            • It is designed for adults.<br>
+            • It is an individually administered intelligence test.<br>
+            • It assesses cognitive abilities and can help identify strengths and weaknesses.
+        </div>
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:8px;">
+        ➜ <b>Situational Application:</b> A psychologist needs to assess the intellectual abilities of an adult client using a Wechsler intelligence test. The appropriate test from this series is the WAIS.
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:8px;">
+        ➜ <b>CFE Tip: How to Recognize It:</b>
+        <div style="padding-left:16px;margin-top:4px;">
+            • WAIS = Adults<br>
+            • WISC = Children<br>
+            • Wechsler = Intelligence assessment
+        </div>
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:8px;">
+        ➜ <b>Memory Trick:</b> WAIS = Wechsler Assesses Intelligence in adults.
+    </div>
+
+</div>
+`
+},
+{
+  type: "quiz",
+  category: "08 - GROUP TEST ADMINISTRATION",
+  subCategory: "NONVERBAL TESTS",
+  question: "A psychologist needs to assess a client's abstract reasoning and ability to perceive relationships using visual matrices while minimizing the influence of language and verbal skills. Which nonverbal intelligence test should the psychologist administer?",
+  choices: [
+        "Wechsler Adult Intelligence Scale (WAIS)",
+        "Stanford-Binet Intelligence Scale",
+        "Raven Progressive Matrices (RPM)",
+        "Minnesota Multiphasic Personality Inventory (MMPI)"
+  ],
+  correctAnswer: "Raven Progressive Matrices (RPM)",
+  notes: `<b>RAVEN PROGRESSIVE MATRICES (RPM)</b><br><br><b>Definition:</b><br><br>A nonverbal test designed to measure abstract reasoning and a person's ability to identify patterns and relationships.<br><br><b>Explanation:</b><br><br>The test shows pictures or patterns with a missing part. The person chooses the answer that correctly completes the pattern. It mainly measures the ability to solve problems using visual information rather than words.<br><br><b>Example:</b><br><br>A pattern shows shapes changing in a certain order, but one shape is missing. The test taker studies the pattern and selects the shape that completes it.<br><br><b>What to Remember for CFE:</b><br><ul><li><b>Type:</b> Nonverbal intelligence test.</li><li><b>Main purpose:</b> Measures abstract reasoning and the ability to perceive relationships.</li><li><b>Task:</b> Identify patterns and choose the missing part.</li><li><b>Versions:</b> Standard Progressive Matrices (SPM), Colored Progressive Matrices (CPM), and Advanced Progressive Matrices (APM).</li><li><b>Scoring:</b> Percentile ranks.</li></ul><b>Situational Application:</b><br><br><b>Situation:</b> A psychologist wants to assess someone's abstract reasoning while reducing the need for verbal responses by having them solve visual patterns.<br><br><b>Answer:</b> Raven Progressive Matrices (RPM)<br><br><b>Why?</b> It is a culture-reduced, nonverbal test specifically constructed to evaluate fluid intelligence and abstract pattern recognition.<br><br><b>CFE Tip: How to Recognize It:</b><br><br>If the question mentions visual patterns, missing shapes, nonverbal reasoning, or abstract reasoning, think of Raven Progressive Matrices (RPM).<br><br><b>Memory Trick:</b><br><br><b>Raven = Reasoning through patterns.</b>`
+},
+{
+  type: "note",
+  category: "NOTES",
+  subCategory: "VERSIONS OF RAVEN PROGRESSIVE MATRICES [C]",
+  question: "Versions of Raven Progressive Matrices",
+  notes: `
+<div style="font-family:Arial,sans-serif;color:#111;background:#f9faff;padding:14px;box-sizing:border-box;width:100%;font-size:15px;line-height:1.6;overflow-wrap:anywhere;">
+
+    <div style="margin-bottom:14px;">
+        <b style="color:#193eae;font-size:16px;">Versions of Raven Progressive Matrices</b>[span_0](start_span)[span_0](end_span)
+    </div>
+
+    <!-- 1. Standard Progressive Matrices (SPM) -->
+    <div style="margin-bottom:12px;">
+        ➜ <b>Standard Progressive Matrices (SPM)</b>[span_1](start_span)[span_1](end_span)
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:6px;">
+        ◆ <b>Purpose:</b> Nonverbal assessment tool designed to measure an individual's ability to perceive and think clearly, make meaning out of confusion, and formulate new concepts when faced with novel information[span_2](start_span)[span_2](end_span).
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:6px;">
+        ◆ <b>Population:</b> 6 to 16 years and adults of average intelligence (8 to 65 years old), general population[span_3](start_span)[span_3](end_span).
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:6px;">
+        ◆ <b>Score:</b> Percentile Ranks[span_4](start_span)[span_4](end_span).
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:6px;">
+        ◆ <b>Time:</b> 40 to 45 minutes[span_5](start_span)[span_5](end_span).
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:14px;">
+        ◆ <b>Description:</b> The Standard Progressive Matrices (SPM) was designed to measure a person's ability to form perceptual relations and to reason by analogy independent of language and formal schooling, and may be used with persons ranging in age from 6 years to adult[span_6](start_span)[span_6](end_span).
+    </div>
+
+    <!-- 2. Advanced Progressive Matrices (APM) -->
+    <div style="margin-bottom:12px;">
+        ➜ <b>Advanced Progressive Matrices (APM)</b>[span_7](start_span)[span_7](end_span)
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:6px;">
+        ◆ <b>Purpose:</b> Measures high-level observation skills, clear thinking ability, and intellectual capacity as nonverbal estimate of abstract reasoning or fluid intelligence[span_8](start_span)[span_8](end_span).
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:6px;">
+        ◆ <b>Population:</b> 11 years old and above, specifically gifted students[span_9](start_span)[span_9](end_span).
+    </div>
+
+    <div style="padding-left:16px;margin-bottom:14px;">
+        ◆ <b>Time:</b> 40 to 60 minutes[span_10](start_span)[span_10](end_span).
+    </div>
+
+    <!-- 3. Colored Progressive Matrices (CPM) -->
+    <div style="margin-bottom:8px;">
+        ➜ <b>Colored Progressive Matrices (CPM)</b> – used to assess the degree to which children and adults with moderate to severe learning difficulties[span_11](start_span)[span_11](end_span).
+    </div>
+
+</div>
+`
+},
+{
+  type: "quiz",
+  category: "08 - GROUP TEST ADMINISTRATION",
+  subCategory: "NONVERBAL TESTS",
+  question: "A test administrator wants to evaluate the fluid intelligence and reasoning ability of individuals from diverse linguistic and educational backgrounds while minimizing cultural bias through nonverbal visual tasks. Which assessment developed by Raymond B. Cattell is specifically designed for this purpose?",
+  choices: [
+        "Raven Progressive Matrices (RPM)",
+        "Culture Fair Intelligence Test (CFIT)",
+        "Peabody Picture Vocabulary Test (PPVT)",
+        "Comprehensive Test of Nonverbal Intelligence (CTONI)"
+  ],
+  correctAnswer: "Culture Fair Intelligence Test (CFIT)",
+  notes: `<b>R.B. CATTELL’S CULTURE FAIR INTELLIGENCE TEST (CFIT)</b><br><br><b>Definition:</b><br><br>A test designed to assess intelligence while reducing the influence of cultural and environmental factors.<br><br><b>Explanation:</b><br><br>CFIT uses nonverbal tasks, such as identifying patterns and solving visual problems, to assess a person's reasoning ability. Its goal is to make intelligence assessment less affected by differences in language, education, and cultural background. However, culture fair does not mean completely free from cultural influence—it aims to minimize that influence.<br><br><b>Example:</b><br><br>A psychologist wants to assess the reasoning ability of people from different language backgrounds. The psychologist uses a test with visual patterns instead of questions that require extensive vocabulary.<br><br><b>What to Remember for CFE:</b><br><ul><li><b>Developer:</b> Raymond B. Cattell.</li><li><b>Purpose:</b> Assess intelligence while reducing cultural and environmental influences.</li><li><b>Type:</b> Nonverbal intelligence test.</li><li><b>Scale 1:</b> Ages 4–8 and older individuals with intellectual disabilities, according to the reviewer.</li><li><b>Scale 2:</b> Ages 8–14 and average adults, according to the reviewer.</li><li><b>Important distinction:</b> Culture fair tests aim to reduce cultural influence; they do not guarantee that all cultural influences are eliminated.</li></ul><b>Situational Application:</b><br><br><b>Situation:</b> A test administrator wants to reduce the effect of language differences when assessing reasoning ability by using nonverbal tasks.<br><br><b>Answer:</b> Culture Fair Intelligence Test (CFIT)<br><br><b>Why?</b> It is specifically constructed by Cattell to measure fluid cognitive abilities using nonverbal items, thereby reducing (though not totally eliminating) cultural and language biases.<br><br><b>CFE Tip: How to Recognize It:</b><br><br>If the question mentions Cattell, reducing cultural influence, or nonverbal intelligence assessment, think of Culture Fair Intelligence Test (CFIT).<br><br><b>Memory Trick:</b><br><br><b>CFIT = Culture influence minimized; intelligence tested.</b>`
 }
 ];
