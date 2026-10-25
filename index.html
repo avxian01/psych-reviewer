@@ -290,11 +290,13 @@
       display: flex;
     }
 
-    #custom-select-modal { z-index: 100000; }
+    #custom-select-modal { z-index: 200000; }
     #settings-modal { z-index: 99999; }
     #confirm-reset-modal { z-index: 110000; }
     #custom-alert-modal { z-index: 110000; }
     #notes-modal { z-index: 105000; }
+    #notes-completed-modal { z-index: 110000; }
+    #add-items-modal { z-index: 102000; }
 
     .custom-modal-card, .settings-modal-content, .modal-notes-content {
       background: #ffffff;
@@ -811,22 +813,28 @@
     .feedback-msg.correct { color: var(--correct); }
     .feedback-msg.incorrect { color: var(--incorrect); }
 
+    /* ENHANCED RESULT SCREEN UI */
+    .result-card-box {
+      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.08);
+      margin: 10px 0 16px 0;
+      text-align: center;
+    }
+
     .score-summary {
       text-align: center;
-      margin: 12px 0;
+      margin: 8px 0;
     }
 
     .score-number {
-      font-size: 2.6em;
-      font-weight: 700;
+      font-size: 2.8em;
+      font-weight: 800;
       color: var(--primary);
-    }
-
-    .actions-group {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      flex-shrink: 0;
+      letter-spacing: -1px;
+      margin: 4px 0;
     }
 
     .terms-list-container {
@@ -881,6 +889,66 @@
       flex-shrink: 0;
     }
 
+    /* CUSTOM PRACTICE SET STYLES */
+    .add-to-custom-btn {
+      background: #e0e7ff;
+      color: var(--primary);
+      border: 1px solid #c7d2fe;
+      border-radius: 20px;
+      padding: 3px 10px;
+      font-size: 0.78em;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .add-to-custom-btn:hover {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .add-to-custom-btn.added {
+      background: #ecfdf5;
+      color: #10b981;
+      border-color: #a7f3d0;
+    }
+
+    .custom-item-action-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      font-size: 0.9em;
+      transition: all 0.15s ease;
+      flex-shrink: 0;
+    }
+
+    .custom-item-action-btn.add-btn {
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+    .custom-item-action-btn.add-btn:hover {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .custom-item-action-btn.remove-btn {
+      color: #ef4444;
+      border-color: #fca5a5;
+    }
+    .custom-item-action-btn.remove-btn:hover {
+      background: #ef4444;
+      color: #ffffff;
+    }
+
     :focus-visible { outline: 3px solid rgba(99,102,241,.45); outline-offset: 3px; }
     button:disabled { opacity: .72; cursor: not-allowed; }
     .study-tip { background: #eef2ff; border: 1px solid #c7d2fe; color: #3730a3; border-radius: 12px; padding: 10px 12px; font-size: .84rem; line-height: 1.45; margin: 12px 0; }
@@ -899,6 +967,10 @@
     .theme-dark .custom-select-trigger, .theme-dark .option-btn, .theme-dark .stat-card, .theme-dark .tool-chip, .theme-dark .mode-selector, .theme-dark .identification-box input, .theme-dark .answer-explanation, .theme-dark .dash-card, .theme-dark .auth-input, .theme-dark .term-card, .theme-dark .full-notes-body { background:#0f172a; color:#f1f5f9; border-color:#334155; }
     .theme-dark .modal-card-header, .theme-dark .modal-option:hover { background:#0f172a; }
     .theme-dark .modal-option, .theme-dark .modal-notes-body p, .theme-dark .full-notes-body p { color:#e2e8f0; }
+    .theme-dark .add-to-custom-btn { background: #312e81; color: #a5b4fc; border-color: #4338ca; }
+    .theme-dark .add-to-custom-btn.added { background: #064e3b; color: #6ee7b7; border-color: #047857; }
+    .theme-dark .custom-item-action-btn { background: #0f172a; border-color: #334155; }
+    .theme-dark .result-card-box { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border-color: #334155; }
   </style>
 </head>
 <body>
@@ -956,9 +1028,34 @@
 
     <button id="start-btn" class="btn" style="margin-top: 2px;" onclick="startQuiz(false)">Start Review</button>
     <button id="continue-btn" class="btn btn-warning" style="margin-top: 6px; display: none;" onclick="continueQuiz()">Continue Review ➔</button>
+    <button class="btn btn-outline" style="margin-top: 6px;" onclick="openCustomSetScreen()">🎯 Custom Practice Set (<span id="home-custom-count">0</span>)</button>
     <button class="btn btn-outline" style="margin-top: 6px;" onclick="openReviewOnlyMode()">📖 Review Only (Notes Index)</button>
 
     <div class="app-watermark">@avxianx</div>
+  </div>
+
+  <!-- CUSTOM PRACTICE SET SCREEN -->
+  <div id="custom-set-screen" class="screen">
+    <div class="header-box">
+      <button class="top-action-btn home-btn" onclick="goToHome()" title="Back to Home">🏠</button>
+      <h3>Custom Practice Set</h3>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+      <span style="font-weight: 700; font-size: 0.8em; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">
+        Selected Items (<span id="custom-set-count">0</span>)
+      </span>
+      <button class="add-to-custom-btn" style="font-size: 0.85em; padding: 5px 12px;" onclick="openAddItemsModal()">➕ Add Items</button>
+    </div>
+
+    <div id="custom-items-container" class="terms-list-container" style="max-height: 58vh;">
+      <!-- Dynamic Selected Items -->
+    </div>
+
+    <div style="display: flex; gap: 8px; margin-top: 10px;">
+      <button class="btn btn-secondary" style="flex: 1;" onclick="clearCustomSet()">Clear All</button>
+      <button class="btn" style="flex: 2;" onclick="startCustomQuiz()">Start Practice ➔</button>
+    </div>
   </div>
 
   <!-- REVIEW ONLY (INDEX) SCREEN -->
@@ -1016,7 +1113,8 @@
 
     <div class="quiz-info-row">
       <span id="question-tracker" class="question-tracker">Quiz 1/3</span>
-      <div style="display:flex; gap:6px; position: relative;">
+      <div style="display:flex; gap:6px; align-items: center; position: relative;">
+        <button id="add-current-custom-btn" class="add-to-custom-btn" onclick="toggleCurrentItemInCustomSet()">➕ Custom</button>
         <div id="points-badge" class="points-badge">⭐ <span id="session-points-count">0</span> XP</div>
         <div id="streak-badge" class="streak-badge" style="display: none;">🔥 <span id="streak-count">0</span></div>
       </div>
@@ -1061,12 +1159,15 @@
 
   <!-- RESULT SCREEN -->
   <div id="result-screen" class="screen">
-    <h2>Review Completed!</h2>
-    <div class="score-summary" id="score-summary-box">
-      <p style="color: var(--text-muted); font-weight: 500;">Your Final Score</p>
+    <div class="header-box" style="margin-bottom: 6px;">
+      <h2>Review Completed!</h2>
+    </div>
+
+    <div class="result-card-box">
+      <p style="color: var(--text-muted); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px;">Your Final Score</p>
       <div id="score-display" class="score-number">0 / 0</div>
-      <p id="percentage-display" style="color: var(--text-muted); font-weight: 600; margin-top: 4px;"></p>
-      <p id="points-earned-display" style="color: var(--primary); font-weight: 700; margin-top: 4px; font-size: 1.05rem;"></p>
+      <p id="percentage-display" style="color: var(--primary); font-weight: 700; margin-top: 2px; font-size: 1rem;"></p>
+      <p id="points-earned-display" style="color: var(--text-muted); font-weight: 600; margin-top: 8px; font-size: 0.9rem; line-height: 1.4;"></p>
     </div>
 
     <div class="review-stats">
@@ -1074,7 +1175,8 @@
       <div class="stat-card"><strong id="result-wrong">0</strong><span>Incorrect</span></div>
       <div class="stat-card"><strong id="result-total">0</strong><span>Questions</span></div>
     </div>
-    <div class="actions-group">
+
+    <div class="actions-group" style="margin-top: 14px;">
       <button id="retake-wrong-btn" class="btn btn-outline" onclick="retakeIncorrect()">Retake Incorrect Questions</button>
       <button class="btn btn-secondary" onclick="resetToHome()">Home Screen / Review Again</button>
     </div>
@@ -1087,6 +1189,31 @@
   <div class="custom-modal-card" onclick="event.stopPropagation()">
     <div class="modal-card-header" id="modal-card-title">Select Option</div>
     <div id="custom-options-list"></div>
+  </div>
+</div>
+
+<!-- ADD ITEMS TO CUSTOM SET MODAL -->
+<div id="add-items-modal" class="modal-overlay" onclick="closeModal(event, 'add-items-modal')">
+  <div class="custom-modal-card" onclick="event.stopPropagation()" style="max-height: 85vh;">
+    <div class="modal-card-header" style="display: flex; justify-content: space-between; align-items: center;">
+      <span>Select Questions / Notes</span>
+      <button class="top-action-btn" style="position: static; transform: none; width: 30px; height: 30px;" onclick="closeModal(event, 'add-items-modal')">✖</button>
+    </div>
+    
+    <div style="padding: 12px; border-bottom: 1px solid var(--border); background: #f8fafc;">
+      <div class="form-group" style="margin-bottom: 8px;">
+        <label>Category</label>
+        <div class="custom-select-trigger" id="cs-category-trigger" onclick="openCustomModal('cs-category')">All Categories</div>
+      </div>
+      <div class="form-group" style="margin-bottom: 0;">
+        <label>Sub-Category</label>
+        <div class="custom-select-trigger disabled" id="cs-subcategory-trigger" onclick="openCustomModal('cs-subcategory')">All Sub-Categories</div>
+      </div>
+    </div>
+
+    <div id="browse-items-list" class="terms-list-container" style="padding: 12px; max-height: 50vh;">
+      <!-- Dynamic Browse Items -->
+    </div>
   </div>
 </div>
 
@@ -1143,6 +1270,18 @@
       <div id="modal-notes-text"></div>
     </div>
     <button class="btn btn-secondary" onclick="closeNotesModal()">Close Notes</button>
+  </div>
+</div>
+
+<!-- NOTES COMPLETED PROMPT MODAL -->
+<div id="notes-completed-modal" class="modal-overlay" onclick="closeModal(event, 'notes-completed-modal')">
+  <div class="settings-modal-content" onclick="event.stopPropagation()" style="text-align: center;">
+    <h3 style="margin-bottom: 10px; color: var(--primary); font-size: 1.2rem;">📖 Notes Review Completed</h3>
+    <p style="margin-bottom: 18px; color: var(--text-main); font-weight: 500; line-height: 1.5;">You have finished reading all the notes in this category.</p>
+    <div style="display: flex; flex-direction: column; gap: 8px; width: 100%;">
+      <button class="btn" onclick="closeModal(event, 'notes-completed-modal'); startQuiz(false);">Review Again</button>
+      <button class="btn btn-secondary" onclick="closeModal(event, 'notes-completed-modal'); resetToHome();">Back to Home Screen</button>
+    </div>
   </div>
 </div>
 
@@ -1258,6 +1397,8 @@
     subcategory: [{ label: "All Sub-Categories", value: "all" }],
     'ro-category': [{ label: "All Categories", value: "all" }],
     'ro-subcategory': [{ label: "All Sub-Categories", value: "all" }],
+    'cs-category': [{ label: "All Categories", value: "all" }],
+    'cs-subcategory': [{ label: "All Sub-Categories", value: "all" }],
     order: [
       { label: "Randomized (Shuffled)", value: "random" },
       { label: "In Order (Sequential)", value: "sequential" }
@@ -1295,9 +1436,11 @@
 
     optionsConfig.category = [{ label: "All Categories", value: "all" }];
     optionsConfig['ro-category'] = [{ label: "All Categories", value: "all" }];
+    optionsConfig['cs-category'] = [{ label: "All Categories", value: "all" }];
     cats.forEach(cat => {
       optionsConfig.category.push({ label: cat, value: cat });
       optionsConfig['ro-category'].push({ label: cat, value: cat });
+      optionsConfig['cs-category'].push({ label: cat, value: cat });
     });
   }
 
@@ -1306,6 +1449,8 @@
     subcategory: "all",
     'ro-category': "all",
     'ro-subcategory': "all",
+    'cs-category': "all",
+    'cs-subcategory': "all",
     order: "random",
     font: "Arial, sans-serif",
     size: "12px"
@@ -1324,15 +1469,21 @@
   let currentAnswerType = 'id';
   let isQuizInProgress = false;
   let isRetakeMode = false;
+  let isCustomPracticeMode = false;
 
   let highestStreak = 0;
   let highestPointsRecord = 0;
+
+  // CUSTOM PRACTICE SET STATE
+  let customPracticeSet = [];
 
   window.onload = function() {
     initCategories();
     updateSubCategoryOptions('main');
     updateSubCategoryOptions('ro');
+    updateSubCategoryOptions('cs');
     loadFontPreferences();
+    loadCustomSetFromStorage();
     checkAuthentication();
   };
 
@@ -1369,10 +1520,11 @@
     
     document.getElementById('home-highest-streak').textContent = highestStreak;
     document.getElementById('home-total-points').textContent = `${highestPointsRecord} XP`;
+    updateCustomSetBadges();
   }
 
   function updateGlobalRecords(sessionMaxStreak, sessionPointsEarned) {
-    if (isRetakeMode) return;
+    if (isRetakeMode || isCustomPracticeMode) return;
 
     if (sessionMaxStreak > highestStreak) {
       highestStreak = sessionMaxStreak;
@@ -1389,7 +1541,7 @@
   }
 
   function saveProgressToStorage() {
-    if (!isQuizInProgress || isRetakeMode) return;
+    if (!isQuizInProgress || isRetakeMode || isCustomPracticeMode) return;
     const dataToSave = {
       activeQuestions,
       currentQuestionIndex,
@@ -1437,9 +1589,14 @@
 
   function updateSubCategoryOptions(mode = 'main') {
     const isRO = (mode === 'ro');
-    const catKey = isRO ? 'ro-category' : 'category';
-    const subKey = isRO ? 'ro-subcategory' : 'subcategory';
-    const subTriggerId = isRO ? 'ro-subcategory-trigger' : 'subcategory-trigger';
+    const isCS = (mode === 'cs');
+    let catKey = 'category';
+    let subKey = 'subcategory';
+    let subTriggerId = 'subcategory-trigger';
+
+    if (isRO) { catKey = 'ro-category'; subKey = 'ro-subcategory'; subTriggerId = 'ro-subcategory-trigger'; }
+    if (isCS) { catKey = 'cs-category'; subKey = 'cs-subcategory'; subTriggerId = 'cs-subcategory-trigger'; }
+
     const subTrigger = document.getElementById(subTriggerId);
     
     if (selections[catKey] === 'all') {
@@ -1448,6 +1605,7 @@
       selections[subKey] = "all";
       subTrigger.textContent = "All Sub-Categories";
       if (isRO) renderReviewOnlyTerms();
+      if (isCS) renderBrowseItemsForCustomSet();
       return;
     }
 
@@ -1469,11 +1627,13 @@
     selections[subKey] = "all";
     subTrigger.textContent = "All Sub-Categories";
     if (isRO) renderReviewOnlyTerms();
+    if (isCS) renderBrowseItemsForCustomSet();
   }
 
   function openCustomModal(type) {
     if ((type === 'subcategory' && selections.category === 'all') ||
-        (type === 'ro-subcategory' && selections['ro-category'] === 'all')) return;
+        (type === 'ro-subcategory' && selections['ro-category'] === 'all') ||
+        (type === 'cs-subcategory' && selections['cs-category'] === 'all')) return;
 
     const modalList = document.getElementById('custom-options-list');
     const modalTitle = document.getElementById('modal-card-title');
@@ -1484,6 +1644,8 @@
       subcategory: "Select Sub-Category",
       'ro-category': "Select Category",
       'ro-subcategory': "Select Sub-Category",
+      'cs-category': "Select Category",
+      'cs-subcategory': "Select Sub-Category",
       order: "Select Question Order",
       font: "Select Font Style",
       size: "Select Font Size"
@@ -1537,6 +1699,8 @@
     if (type === 'category') updateSubCategoryOptions('main');
     if (type === 'ro-category') updateSubCategoryOptions('ro');
     if (type === 'ro-subcategory') renderReviewOnlyTerms();
+    if (type === 'cs-category') updateSubCategoryOptions('cs');
+    if (type === 'cs-subcategory') renderBrowseItemsForCustomSet();
     
     if (type === 'font' || type === 'size') {
       applyCustomizations();
@@ -1613,7 +1777,221 @@
     showScreen('term-detail-screen');
   }
 
+  /* CUSTOM PRACTICE SET FUNCTIONS */
+  function loadCustomSetFromStorage() {
+    try {
+      const saved = localStorage.getItem('quizReviewerCustomPracticeSet');
+      if (saved) {
+        customPracticeSet = JSON.parse(saved) || [];
+      }
+    } catch(e) { customPracticeSet = []; }
+    updateCustomSetBadges();
+  }
+
+  function saveCustomSetToStorage() {
+    try {
+      localStorage.setItem('quizReviewerCustomPracticeSet', JSON.stringify(customPracticeSet));
+    } catch(e) {}
+    updateCustomSetBadges();
+  }
+
+  function updateCustomSetBadges() {
+    const count = customPracticeSet.length;
+    if (document.getElementById('home-custom-count')) document.getElementById('home-custom-count').textContent = count;
+    if (document.getElementById('custom-set-count')) document.getElementById('custom-set-count').textContent = count;
+  }
+
+  function openCustomSetScreen() {
+    showScreen('custom-set-screen');
+    renderCustomSelectedItems();
+  }
+
+  function renderCustomSelectedItems() {
+    const container = document.getElementById('custom-items-container');
+    container.innerHTML = '';
+
+    if (customPracticeSet.length === 0) {
+      container.innerHTML = `<p style="text-align:center; color: var(--text-muted); padding: 30px 10px;">No items selected yet.<br>Click "➕ Add Items" above to choose questions or notes!</p>`;
+      return;
+    }
+
+    customPracticeSet.forEach((q, idx) => {
+      const card = document.createElement('div');
+      card.className = 'term-card';
+
+      const titleSpan = document.createElement('span');
+      titleSpan.className = 'term-card-title';
+      titleSpan.textContent = q.question || q.correctAnswer;
+
+      const removeBtn = document.createElement('button');
+      removeBtn.className = 'custom-item-action-btn remove-btn';
+      removeBtn.innerHTML = '✖';
+      removeBtn.title = 'Remove item';
+      removeBtn.onclick = (e) => {
+        e.stopPropagation();
+        removeCustomSetItem(idx);
+      };
+
+      card.append(titleSpan, removeBtn);
+      container.appendChild(card);
+    });
+  }
+
+  function removeCustomSetItem(index) {
+    customPracticeSet.splice(index, 1);
+    saveCustomSetToStorage();
+    renderCustomSelectedItems();
+    updateQuizBookmarkButton();
+  }
+
+  function clearCustomSet() {
+    if (customPracticeSet.length === 0) return;
+    customPracticeSet = [];
+    saveCustomSetToStorage();
+    renderCustomSelectedItems();
+    updateQuizBookmarkButton();
+  }
+
+  function openAddItemsModal() {
+    document.getElementById('add-items-modal').classList.add('active');
+    renderBrowseItemsForCustomSet();
+  }
+
+  function renderBrowseItemsForCustomSet() {
+    const container = document.getElementById('browse-items-list');
+    container.innerHTML = '';
+
+    if (typeof questionBank === 'undefined') return;
+
+    const filtered = questionBank.filter(q => {
+      const matchCat = (selections['cs-category'] === 'all' || q.category === selections['cs-category']);
+      const matchSub = (selections['cs-subcategory'] === 'all' || q.subCategory === selections['cs-subcategory']);
+      return matchCat && matchSub;
+    });
+
+    if (filtered.length === 0) {
+      container.innerHTML = `<p style="text-align:center; color: var(--text-muted); padding: 20px;">No questions found.</p>`;
+      return;
+    }
+
+    filtered.forEach(q => {
+      const isAlreadyAdded = customPracticeSet.some(item => item.question === q.question);
+
+      const card = document.createElement('div');
+      card.className = 'term-card';
+
+      const titleSpan = document.createElement('span');
+      titleSpan.className = 'term-card-title';
+      titleSpan.textContent = q.question;
+
+      const addBtn = document.createElement('button');
+      addBtn.className = `custom-item-action-btn ${isAlreadyAdded ? 'remove-btn' : 'add-btn'}`;
+      addBtn.innerHTML = isAlreadyAdded ? '✔' : '➕';
+      addBtn.title = isAlreadyAdded ? 'Remove from set' : 'Add to set';
+
+      addBtn.onclick = (e) => {
+        e.stopPropagation();
+        toggleItemInCustomSet(q);
+        renderBrowseItemsForCustomSet();
+      };
+
+      card.append(titleSpan, addBtn);
+      container.appendChild(card);
+    });
+  }
+
+  function toggleItemInCustomSet(q) {
+    const existingIndex = customPracticeSet.findIndex(item => item.question === q.question);
+    if (existingIndex >= 0) {
+      customPracticeSet.splice(existingIndex, 1);
+    } else {
+      customPracticeSet.push({...q});
+    }
+    saveCustomSetToStorage();
+    renderCustomSelectedItems();
+    updateQuizBookmarkButton();
+  }
+
+  function toggleCurrentItemInCustomSet() {
+    const currentItem = activeQuestions[currentQuestionIndex];
+    if (!currentItem) return;
+    toggleItemInCustomSet(currentItem);
+  }
+
+  function updateQuizBookmarkButton() {
+    const btn = document.getElementById('add-current-custom-btn');
+    if (!btn) return;
+
+    const currentItem = activeQuestions[currentQuestionIndex];
+    if (!currentItem) {
+      btn.style.display = 'none';
+      return;
+    }
+
+    btn.style.display = 'inline-flex';
+    const isAdded = customPracticeSet.some(item => item.question === currentItem.question);
+
+    if (isAdded) {
+      btn.classList.add('added');
+      btn.innerHTML = '✔ Added';
+    } else {
+      btn.classList.remove('added');
+      btn.innerHTML = '➕ Custom';
+    }
+  }
+
+  function startCustomQuiz() {
+    if (customPracticeSet.length === 0) {
+      showAlert("Please select at least 1 item for your Custom Practice Set!");
+      return;
+    }
+
+    isCustomPracticeMode = true;
+    isRetakeMode = false;
+    activeQuestions = customPracticeSet.map(q => ({
+      ...q,
+      choices: q.choices ? [...q.choices] : []
+    }));
+
+    if (selections.order === 'random') {
+      activeQuestions = shuffleArray(activeQuestions);
+      const positionCounts = [0, 0, 0, 0];
+      activeQuestions.forEach(q => {
+        if (!q.choices || !q.correctAnswer) return;
+        const choices = [...q.choices];
+        const correctIndex = choices.findIndex(c =>
+          String(c).trim().toLowerCase() === String(q.correctAnswer).trim().toLowerCase()
+        );
+        if (correctIndex < 0) return;
+        const correct = choices.splice(correctIndex, 1)[0];
+        const slots = Array.from({length: choices.length + 1}, (_, i) => i)
+          .sort((a, b) => positionCounts[a] - positionCounts[b] || Math.random() - 0.5);
+        const target = slots[0];
+        choices.splice(target, 0, correct);
+        q.choices = shuffleArray(choices.filter(c => c !== correct));
+        q.choices = q.choices.filter(c => String(c).trim().toLowerCase() !== String(correct).trim().toLowerCase());
+        q.choices.splice(target, 0, correct);
+        positionCounts[target]++;
+      });
+    }
+
+    totalQuizCount = activeQuestions.filter(q => q.type === 'quiz').length;
+    totalNoteCount = activeQuestions.filter(q => q.type === 'note').length;
+
+    currentQuestionIndex = 0;
+    score = 0;
+    streak = 0;
+    maxSessionStreak = 0;
+    sessionPoints = 0;
+    incorrectQuestions = [];
+    userAnswersState = {};
+
+    showScreen('quiz-screen');
+    loadItem();
+  }
+
   function startQuiz(retake = false) {
+    isCustomPracticeMode = false;
     isRetakeMode = retake;
 
     if (!isRetakeMode && typeof questionBank !== 'undefined') {
@@ -1696,6 +2074,7 @@
           totalNoteCount = data.totalNoteCount;
           isQuizInProgress = true;
           isRetakeMode = false;
+          isCustomPracticeMode = false;
 
           showScreen('quiz-screen');
           loadItem();
@@ -1718,8 +2097,21 @@
     const badge = document.getElementById('streak-badge');
     const countEl = document.getElementById('streak-count');
     const ptsEl = document.getElementById('session-points-count');
+    const ptsBadge = document.getElementById('points-badge');
     const currentItem = activeQuestions[currentQuestionIndex];
 
+    if (isCustomPracticeMode) {
+      ptsBadge.style.display = 'none';
+      if (currentItem && currentItem.type === 'quiz' && streak > 0) {
+        badge.style.display = 'flex';
+        countEl.textContent = streak;
+      } else {
+        badge.style.display = 'none';
+      }
+      return;
+    }
+
+    ptsBadge.style.display = 'block';
     ptsEl.textContent = sessionPoints;
 
     if (currentItem && currentItem.type === 'quiz' && streak > 0 && !isRetakeMode) {
@@ -1738,6 +2130,7 @@
   }
 
   function triggerFloatingXP(pointsGained) {
+    if (isCustomPracticeMode) return;
     const ptsBadge = document.getElementById('points-badge');
     const floatEl = document.createElement('div');
     floatEl.className = 'floating-xp-text';
@@ -1778,7 +2171,7 @@
     document.getElementById('progress-bar').style.width = `${progressPercent}%`;
 
     if (currentItem.type === 'note') {
-      document.getElementById('session-title').textContent = isRetakeMode ? 'Retake: Review & Notes' : 'Review & Notes';
+      document.getElementById('session-title').textContent = isCustomPracticeMode ? 'Custom Practice (Notes)' : (isRetakeMode ? 'Retake: Review & Notes' : 'Review & Notes');
       document.getElementById('mode-selector-box').style.display = 'none';
       document.getElementById('identification-container').style.display = 'none';
       document.getElementById('options-container').style.display = 'none';
@@ -1792,7 +2185,7 @@
       document.getElementById('prev-btn').style.display = (currentQuestionIndex > 0) ? 'inline-block' : 'none';
       document.getElementById('next-btn').style.display = 'inline-block';
     } else {
-      document.getElementById('session-title').textContent = isRetakeMode ? 'Retake Incorrect Questions' : 'Review Session';
+      document.getElementById('session-title').textContent = isCustomPracticeMode ? 'Custom Practice Session' : (isRetakeMode ? 'Retake Incorrect Questions' : 'Review Session');
       document.getElementById('mode-selector-box').style.display = 'flex';
       document.getElementById('notes-only-container').style.display = 'none';
 
@@ -1825,6 +2218,7 @@
     }
 
     updateStreakUI();
+    updateQuizBookmarkButton();
   }
 
   function lockIdentificationOnly() {
@@ -1899,7 +2293,7 @@
 
     if (isCorrect) {
       score++;
-      if (!isRetakeMode) {
+      if (!isRetakeMode && !isCustomPracticeMode) {
         streak++;
         if (streak > maxSessionStreak) maxSessionStreak = streak;
         gained = calculateGainedPoints('mc', streak);
@@ -1907,12 +2301,16 @@
         showFeedback(true, `+${gained} XP Earned!`);
         triggerStreakAnimation();
         triggerFloatingXP(gained);
+      } else if (isCustomPracticeMode) {
+        streak++;
+        showFeedback(true, `(Custom Set Practice)`);
+        triggerStreakAnimation();
       } else {
         showFeedback(true, `(Retake Mode)`);
       }
       playSound('correct');
     } else {
-      if (!isRetakeMode) {
+      if (!isRetakeMode && !isCustomPracticeMode) {
         streak = 0;
         if (sessionPoints > 0) {
           sessionPoints = Math.max(0, sessionPoints - 5);
@@ -1921,6 +2319,9 @@
         } else {
           showFeedback(false, `Streak reset!`);
         }
+      } else if (isCustomPracticeMode) {
+        streak = 0;
+        showFeedback(false, `(Practice Mode - No XP Penalty)`);
       } else {
         showFeedback(false, `Incorrect!`);
       }
@@ -1934,7 +2335,7 @@
       isCorrect: isCorrect,
       selectedChoice: selectedChoice,
       type: 'mc',
-      gainedPoints: isRetakeMode ? 0 : (isCorrect ? gained : (hasDeduction ? -5 : 0))
+      gainedPoints: (isRetakeMode || isCustomPracticeMode) ? 0 : (isCorrect ? gained : (hasDeduction ? -5 : 0))
     };
 
     lockInputs(currentItem);
@@ -1961,7 +2362,7 @@
 
     if (isCorrect) {
       score++;
-      if (!isRetakeMode) {
+      if (!isRetakeMode && !isCustomPracticeMode) {
         streak++;
         if (streak > maxSessionStreak) maxSessionStreak = streak;
         gained = calculateGainedPoints('id', streak);
@@ -1969,12 +2370,16 @@
         showFeedback(true, `+${gained} XP Earned! (Identification Bonus)`);
         triggerStreakAnimation();
         triggerFloatingXP(gained);
+      } else if (isCustomPracticeMode) {
+        streak++;
+        showFeedback(true, `Correct! (Custom Set Practice)`);
+        triggerStreakAnimation();
       } else {
         showFeedback(true, `Correct! (Retake Mode)`);
       }
       playSound('correct');
     } else {
-      if (!isRetakeMode) {
+      if (!isRetakeMode && !isCustomPracticeMode) {
         streak = 0;
         if (sessionPoints > 0) {
           sessionPoints = Math.max(0, sessionPoints - 5);
@@ -1983,6 +2388,9 @@
         } else {
           showFeedback(false, `Streak reset! Correct answer: ${currentItem.correctAnswer}`);
         }
+      } else if (isCustomPracticeMode) {
+        streak = 0;
+        showFeedback(false, `Incorrect! Correct answer: ${currentItem.correctAnswer}`);
       } else {
         showFeedback(false, `Incorrect! Correct answer: ${currentItem.correctAnswer}`);
       }
@@ -1995,7 +2403,7 @@
       isCorrect: isCorrect,
       userAnswer: userAnswer,
       type: 'id',
-      gainedPoints: isRetakeMode ? 0 : (isCorrect ? gained : (hasDeduction ? -5 : 0))
+      gainedPoints: (isRetakeMode || isCustomPracticeMode) ? 0 : (isCorrect ? gained : (hasDeduction ? -5 : 0))
     };
 
     lockInputs(currentItem);
@@ -2108,10 +2516,16 @@
       loadItem();
     } else {
       isQuizInProgress = false;
-      if (!isRetakeMode) clearSavedProgress();
+      if (!isRetakeMode && !isCustomPracticeMode) clearSavedProgress();
       document.getElementById('continue-btn').style.display = 'none';
       document.getElementById('start-btn').textContent = 'Start Review';
-      finishQuiz();
+
+      // Kapag PURO NOTES lang ang binabasa (zero quiz questions):
+      if (totalQuizCount === 0) {
+        document.getElementById('notes-completed-modal').classList.add('active');
+      } else {
+        finishQuiz();
+      }
     }
   }
 
@@ -2122,14 +2536,14 @@
     const totalQuiz = totalQuizCount > 0 ? totalQuizCount : 1;
     const percentage = Math.round((score / totalQuiz) * 100);
 
-    if (!isRetakeMode) {
+    if (!isRetakeMode && !isCustomPracticeMode) {
       updateGlobalRecords(maxSessionStreak, sessionPoints);
     }
 
     document.getElementById('score-display').textContent = `${score} / ${totalQuiz}`;
     document.getElementById('percentage-display').textContent = `Percentage: ${percentage}%`;
-    document.getElementById('points-earned-display').textContent = isRetakeMode ? 
-      `Retake Complete (Practice Mode - No XP Recorded)` : 
+    document.getElementById('points-earned-display').textContent = (isRetakeMode || isCustomPracticeMode) ? 
+      `Practice Complete (Custom / Retake Set - No XP Recorded)` : 
       `Total Points Earned: ${sessionPoints} XP ⭐`;
     
     document.getElementById('result-correct').textContent = score;
@@ -2137,7 +2551,7 @@
     document.getElementById('result-total').textContent = totalQuiz;
 
     const retakeWrongBtn = document.getElementById('retake-wrong-btn');
-    if (isRetakeMode) {
+    if (isRetakeMode || isCustomPracticeMode) {
       retakeWrongBtn.style.display = 'none';
     } else {
       retakeWrongBtn.style.display = (incorrectQuestions.length === 0) ? 'none' : 'block';
@@ -2152,6 +2566,7 @@
   function resetToHome() {
     isQuizInProgress = false;
     isRetakeMode = false;
+    isCustomPracticeMode = false;
     clearSavedProgress();
     document.getElementById('continue-btn').style.display = 'none';
     document.getElementById('start-btn').textContent = 'Start Review';
